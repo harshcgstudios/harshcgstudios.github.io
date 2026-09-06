@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anatomy 3D Viewer</title>
+  <meta name="description" content="View CT scans from skin to bone in real-time 3D volume rendering.">
+  
+  <!-- Modern Font: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="index_v10.css?v=12.11">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+
+
+  <div class="app-container">
+    <!-- Sidebar Overlay -->
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+    
+    <!-- Sidebar / Library Panel -->
+    <aside class="sidebar glass-panel" id="sidebar">
+      <div class="sidebar-header">
+        <h1>Anatomy<span class="highlight">3D</span></h1>
+        <p>Volumetric Scan Viewer</p>
+      </div>
+
+      <!-- Sidebar Navigation Tabs -->
+      <div class="sidebar-tabs">
+        <button class="tab-btn active" id="tabLocal">Local Library</button>
+        <button class="tab-btn" id="tabMorphoSource">MorphoSource</button>
+        <button class="tab-btn" id="tabRISD">RISD Nature Lab</button>
+        <button class="tab-btn" id="tabSketchfab">Sketchfab</button>
+      </div>
+
+      <div class="sidebar-content">
+        <!-- Local Tab Panel -->
+        <div id="panelLocal" class="tab-panel active">
+          <div class="panel-header-row">
+            <h3>Local Scans & Meshes</h3>
+            <div class="category-toggle">
+              <button class="category-btn active" id="btnCatHuman">Human</button>
+              <button class="category-btn" id="btnCatAnimal">Animal</button>
+            </div>
+          </div>
+          <ul class="dataset-list" id="datasetList">
+            <!-- Populated dynamically from models_list.json -->
+          </ul>
+          
+          <div class="upload-section">
+            <label for="fileUpload" class="upload-btn">
+              Load Local Scan / Mesh
+            </label>
+            <input type="file" id="fileUpload" accept=".nrrd,.nii,.gz,.ply,.stl,.glb,.gltf" style="display: none;">
+            <p class="helper-text">Process volumes (NRRD/NII) or meshes (PLY/STL/GLB) directly in your browser. (Instant & offline)</p>
+          </div>
+        </div>
+
+
+
+        <!-- MorphoSource Tab Panel -->
+        <div id="panelMorphoSource" class="tab-panel">
+          <h3>MorphoSource Library</h3>
+          <ul class="dataset-list" id="morphoSourceDatasetList">
+            <!-- Populated dynamically from morphosource_models.json -->
+          </ul>
+          <div class="info-box" style="margin-top: auto; padding-top: 16px; border-top: 1px solid var(--panel-border);">
+            <p class="helper-text">These micro-CT scanned primate skulls are downloaded, extracted, and cached on demand from MorphoSource's scientific archive.</p>
+          </div>
+        </div>
+
+        <!-- RISD Nature Lab Tab Panel -->
+        <div id="panelRISD" class="tab-panel">
+          <h3>RISD Nature Lab</h3>
+          <ul class="dataset-list" id="risdDatasetList">
+            <!-- Populated dynamically from risd_models.json -->
+          </ul>
+          <div class="info-box" style="margin-top: auto; padding-top: 16px; border-top: 1px solid var(--panel-border);">
+            <p class="helper-text">This collection features high-fidelity 3D scans of biological specimens from the RISD Nature Lab, ideal for studying morphology and structure.</p>
+          </div>
+        </div>
+
+        <!-- Sketchfab Tab Panel -->
+        <div id="panelSketchfab" class="tab-panel">
+          <h3>Sketchfab Collection</h3>
+          <ul class="dataset-list" id="sketchfabDatasetList">
+            <!-- Populated dynamically from Sketchfab API -->
+          </ul>
+          <div class="info-box" style="margin-top: auto; padding-top: 16px; border-top: 1px solid var(--panel-border);">
+            <p class="helper-text">These models are fetched in real-time from your Sketchfab collection and displayed using the official interactive 3D embed viewer.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="sidebar-footer">
+        <p class="disclaimer-text">Educational use only. Original scans are copyright to their respective owners.</p>
+      </div>
+    </aside>
+
+    <!-- Main 3D Viewer Container -->
+    <main class="viewer-container" id="viewerContainer">
+      <!-- Three.js Canvas gets injected here -->
+      
+      <!-- Toggle Sidebar Button (visible on mobile) -->
+      <button id="sidebarToggleBtn" class="sidebar-toggle-btn" aria-label="Toggle Model List">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      
+      <!-- Maximize/Fullscreen Button -->
+      <button id="fullscreenBtn" class="fullscreen-btn" aria-label="Toggle Fullscreen">
+        <svg class="fs-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+      </button>
+      
+      <!-- Sketchfab Embed Iframe -->
+      <iframe id="sketchfabEmbed" class="viewer-iframe hidden" src="" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share></iframe>
+      
+      <!-- Loading Overlay -->
+      <div id="loader" class="glass-panel overlay-loader hidden">
+        <div class="spinner"></div>
+        <div class="loader-text">Loading Volumetric Data... <span id="loadingProgress">0%</span></div>
+      </div>
+
+      <!-- Sketch Overlay Canvas -->
+      <canvas id="sketchOverlayCanvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 4; background: white; pointer-events: none; display: none;"></canvas>
+      
+      <!-- Interactive Threshold Control Panel Over the Viewer -->
+      <div class="control-panel glass-panel">
+        <div class="control-header">
+          <h3>Tissue Density Threshold</h3>
+          <p>Slide to strip away skin/muscle to reveal bone</p>
+        </div>
+        
+        <div class="slider-container">
+          <span class="slider-label">Skin</span>
+          <input type="range" id="thresholdSlider" min="0" max="1" step="0.01" value="0.26" class="modern-slider">
+          <span class="slider-label">Bone</span>
+        </div>
+
+        <div class="toggle-group">
+          <label class="toggle-label">
+            <span id="renderModeLabelText">Mode:</span>
+            <select id="renderMode" class="modern-select">
+              <option value="DVR" selected>Direct Volume (Smooth Muscles)</option>
+              <option value="ISO">Isosurface (Solid View)</option>
+              <option value="MIP">Maximum Intensity (MIP)</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="toggle-group sketch-style-group" style="display: none; margin-top: 10px;">
+          <label class="toggle-label">
+            <span>Sketch Style:</span>
+            <select id="sketchStyleSelect" class="modern-select">
+              <option value="clay" selected>1. Chiaroscuro Clay (Smooth Shading)</option>
+              <option value="clayOutlines">2. Chiaroscuro Clay (with Sharper Outlines)</option>
+              <option value="blueprint">3. Technical Blueprint (White/Blue)</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="export-container" style="display: flex; gap: 10px; margin-top: 5px; border-top: 1px solid var(--panel-border); padding-top: 15px;">
+          <button id="convertToSketchBtn" class="url-load-btn" style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px; font-weight: 600; font-size: 0.8rem;">
+            Convert to Sketch
+          </button>
+          <button id="exportSketchBtn" class="url-load-btn" style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px; font-weight: 600; font-size: 0.8rem; background: #10b981; box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2); opacity: 0.5; cursor: not-allowed;" disabled>
+            Export Image
+          </button>
+        </div>
+
+        <div class="hotkey-hint">
+          Press <kbd class="kbd-btn">F</kbd> to focus scan in middle
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Entry Point Modules -->
+  <script type="module" src="js/main_v10.js?v=12.13"></script>
+
+</body>
+</html>

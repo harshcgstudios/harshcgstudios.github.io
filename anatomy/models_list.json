@@ -1,0 +1,275 @@
+[
+  {
+    "title": "American Alligator (Volume CT)",
+    "url": "models/American_Alligator_Volume.nrrd",
+    "size": "1.9MB",
+    "thumbnail": "images/thumb_bone_ct.png",
+    "isLocal": true
+  },
+  {
+    "title": "Arctic Wolf (Volume CT)",
+    "url": "models/Arctic_Wolf_Volume.nrrd",
+    "size": "6.7MB",
+    "thumbnail": "images/thumb_sheep_ct.png",
+    "isLocal": true
+  },
+  {
+    "title": "Atlas CT Scan (Subject 12025abab5)",
+    "url": "models/Atlas_CT_12025abab5.nrrd",
+    "size": "5.5MB",
+    "thumbnail": "images/atlas_120_thumbnail.png",
+    "isLocal": true
+  },
+  {
+    "title": "Atlas CT Scan (Subject bf178a41b2)",
+    "url": "models/Atlas_CT_bf178a41b2.nrrd",
+    "size": "3.9MB",
+    "thumbnail": "images/atlas_bf_thumbnail.png",
+    "isLocal": true
+  },
+  {
+    "title": "Bald Eagle (Volume CT)",
+    "url": "models/Bald_Eagle_Volume.nrrd",
+    "size": "5.9MB",
+    "thumbnail": "images/bald_eagle_ct_thumbnail.png",
+    "isLocal": true
+  },
+  {
+    "title": "Bone CT Scan",
+    "url": "models/4 Bone 0.5 Non -Contrast.nrrd",
+    "size": "6.5MB",
+    "thumbnail": "images/bone_ct_thumbnail.png",
+    "isLocal": true
+  },
+  {
+    "title": "Broad Tailed Gecko (Volume CT)",
+    "url": "models/Broad_Tailed_Gecko_Volume.nrrd",
+    "size": "1.4MB",
+    "thumbnail": "images/thumb_bone_ct.png",
+    "isLocal": true
+  },
+  {
+    "title": "Cat's Cerebral Cranium (Mesh)",
+    "url": "models/625769938_6CerebralCranio2.0CE_nrrd.79662c667146985d1f667b9b31087f9f_N1GGXC.stl",
+    "size": "12.3MB",
+    "thumbnail": "images/thumb_skull_mesh.png",
+    "isLocal": true
+  },
+  {
+    "title": "Cat's Right Paw (Mesh)",
+    "url": "models/136779921_3Pfote060Br60rechts_nrrd.23995d6796d5862d50de83f66451d463_WHR1WM.stl",
+    "size": "18.8MB",
+    "thumbnail": "images/thumb_paw.png",
+    "isLocal": true
+  },
+  {
+    "title": "Class 3 Malocclusion (MediModel CT)",
+    "url": "models/Class_3_Malocclusion.nrrd",
+    "size": "6.1MB",
+    "thumbnail": "images/thumb_skull_vol.png",
+    "isLocal": true
+  },
+  {
+    "title": "Egyptian Fruit Bat Ct",
+    "url": "models/Egyptian_Fruit_Bat_CT.nrrd",
+    "size": "5.3MB",
+    "thumbnail": "images/vampire_bat_ct_thumbnail.png",
+    "isLocal": true
+  },
+  {
+    "title": "European Rabbit (Volume CT)",
+    "url": "models/European_Rabbit_Volume.nrrd",
+    "size": "7.2MB",
+    "thumbnail": "images/thumb_bone_ct.png",
+    "isLocal": true
+  },
+  {
+    "title": "Facial Navigation",
+    "url": "models/301 FACE NAV 1.2x0.6 Bone Thins.nrrd",
+    "size": "4.6MB",
+    "thumbnail": "images/face_nav_thumbnail.png",
+    "isLocal": true
+  },
+  {
+    "title": "Gila Monster (Volume CT)",
+    "url": "models/Gila_Monster_Volume.nrrd",
+    "size": "6.1MB",
+    "thumbnail": "images/gila_monster_ct_thumbnail.png",
+    "isLocal": true
+  },
+  {
+    "title": "Green Anaconda (Volume CT)",
+    "url": "models/Green_Anaconda_Volume.nrrd",
+    "size": "5.5MB",
+    "thumbnail": "images/thumb_bone_ct.png",
+    "isLocal": true
+  },
+  {
+    "title": "Green Tree Python (Whole Skeleton)",
+    "url": "models/green_tree_python_whole_skeleton_000680185.ply",
+    "size": "14.9MB",
+    "thumbnail": "images/thumb_bone_ct.png",
+    "isLocal": true
+  },
+  {
+    "title": "Green Varanus (Volume CT)",
+    "url": "models/Green_Varanus_Volume.nrrd",
+    "size": "6.7MB",
+    "thumbnail": "images/thumb_bone_ct.png",
+    "isLocal": true
+  },
+  {
+    "title": "Hairy Frog (Volume CT)",
+    "url": "models/Hairy_Frog_Volume.nrrd",
+    "size": "2.3MB",
+    "thumbnail": "images/thumb_bone_ct.png",
+    "isLocal": true
+  },
+  {
+    "title": "Human Body Volume",
+    "url": "models/1 Exported volume.nrrd",
+    "size": "4.7MB",
+    "thumbnail": "images/thumb_volume_ct.png",
+    "isLocal": true
+  },
+  {
+    "title": "Human Head (Three.js)",
+    "url": "models/human_head.nrrd",
+    "size": "6.3MB",
+    "thumbnail": "images/thumb_brain.png",
+    "isLocal": true
+  },
+  {
+    "title": "Human Skull (Volume)",
+    "url": "models/skull.nrrd",
+    "size": "9.7MB",
+    "thumbnail": "images/thumb_skull_vol.png",
+    "isLocal": true
+  },
+  {
+    "title": "Intermediate Rattlesnake (Volume CT)",
+    "url": "models/Intermediate_Rattlesnake_Volume.nrrd",
+    "size": "4.5MB",
+    "thumbnail": "images/thumb_bone_ct.png",
+    "isLocal": true
+  },
+  {
+    "title": "Minipig Cranium (Mesh)",
+    "url": "models/minipig_cranium_export.stl",
+    "size": "17.0MB",
+    "thumbnail": "images/thumb_cranium.png",
+    "isLocal": true
+  },
+  {
+    "title": "Mouse CT Scan (1h Post-Injection)",
+    "url": "models/Mouse_Healthy_CT_1h.nrrd",
+    "size": "6.1MB",
+    "thumbnail": "images/thumb_volume_ct.png",
+    "isLocal": true
+  },
+  {
+    "title": "Mouse CT Scan (24h Post-Injection)",
+    "url": "models/Mouse_Healthy_CT_24h.nrrd",
+    "size": "4.0MB",
+    "thumbnail": "images/thumb_volume_ct.png",
+    "isLocal": true
+  },
+  {
+    "title": "Mouse CT Scan (72h Post-Injection)",
+    "url": "models/Mouse_Healthy_CT_72h.nrrd",
+    "size": "6.2MB",
+    "thumbnail": "images/thumb_volume_ct.png",
+    "isLocal": true
+  },
+  {
+    "title": "PSMA Pelvis CT Scan",
+    "url": "models/PSMA_Pelvis_CT.nrrd",
+    "size": "2.7MB",
+    "thumbnail": "images/psma_pelvis_thumbnail.png",
+    "isLocal": true
+  },
+  {
+    "title": "Rat-Kangaroo Mesh",
+    "url": "models/cranium.ply",
+    "size": "13.0MB",
+    "thumbnail": "images/thumb_cranium.png",
+    "isLocal": true
+  },
+  {
+    "title": "Sinus Scan",
+    "url": "models/2 Sinus  1.5  J80s.nrrd",
+    "size": "8.1MB",
+    "thumbnail": "images/sinus_scan_thumbnail.png",
+    "isLocal": true
+  },
+  {
+    "title": "Spotted Gliding Lizard (Full Skeleton)",
+    "url": "models/spotted_gliding_lizard_full_skeleton_000036116.stl",
+    "size": "13.2MB",
+    "thumbnail": "images/thumb_bone_ct.png",
+    "isLocal": true
+  },
+  {
+    "title": "Suriname Toad (Full Body)",
+    "url": "models/suriname_toad_full_body_000012417.stl",
+    "size": "17.2MB",
+    "thumbnail": "images/thumb_bone_ct.png",
+    "isLocal": true
+  },
+  {
+    "title": "Vampire Bat (Volume CT)",
+    "url": "models/Vampire_Bat_Volume.nrrd",
+    "size": "5.4MB",
+    "thumbnail": "images/vampire_bat_ct_thumbnail.png",
+    "isLocal": true
+  },
+  {
+    "title": "Visible Human Female (Downsampled 10MB)",
+    "url": "models/visible_human_female_whole_body.nrrd",
+    "size": "10.6MB",
+    "thumbnail": "images/thumb_volume_ct.png",
+    "isLocal": true
+  },
+  {
+    "title": "Visible Human Female Ankle (Volume CT)",
+    "url": "models/Visible_Human_Female_Ankle_Volume.nrrd",
+    "size": "1.4MB",
+    "thumbnail": "images/vhp_ankle_thumbnail.png",
+    "isLocal": true
+  },
+  {
+    "title": "Visible Human Female Hip (Volume CT)",
+    "url": "models/Visible_Human_Female_Hip_Volume.nrrd",
+    "size": "7.7MB",
+    "thumbnail": "images/vhp_hip_thumbnail.png",
+    "isLocal": true
+  },
+  {
+    "title": "Visible Human Female Knee (Volume CT)",
+    "url": "models/Visible_Human_Female_Knee_Volume.nrrd",
+    "size": "2.2MB",
+    "thumbnail": "images/vhp_knee_thumbnail.png",
+    "isLocal": true
+  },
+  {
+    "title": "Visible Human Male (Downsampled 10MB)",
+    "url": "models/visible_human_whole_body.nrrd",
+    "size": "10.4MB",
+    "thumbnail": "images/thumb_volume_ct.png",
+    "isLocal": true
+  },
+  {
+    "title": "human skull",
+    "url": "models/Segmentation_Segment_1.stl",
+    "size": "11.4MB",
+    "thumbnail": "images/thumb_skull_mesh.png",
+    "isLocal": true
+  },
+  {
+    "title": "Praying Mantis Mesh",
+    "url": "models/Network/bugs/mantis-religiosa-ct-scan/source/Mantis_Publication_V1.stl",
+    "size": "46MB",
+    "thumbnail": "images/thumb_mantis_ct.png",
+    "isLocal": false
+  }
+]

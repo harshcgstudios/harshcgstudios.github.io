@@ -1,0 +1,30 @@
+# Dev / temp work (mirrored on NAS, regenerable)
+scratch/
+__pycache__/
+*.pyc
+
+# Runtime / local-only (rewritten by server.py, secrets)
+server.log
+stats_data.json
+stats_key.txt
+morpho_api_key.txt
+
+# Dev backups
+*.bak
+*.backup_grindelwald
+*~*.TMP
+
+# Anatomy download cache (refetched on demand)
+anatomy/models/cache/
+
+# Over GitHub's 100MB push limit (kept on NAS only)
+fb_4k_full.mp4
+anatomy/models/visible_human_*_balanced.nrrd
+anatomy/models/visible_human_*_highres.nrrd
+anatomy/models/visible_human_*_sharp.nrrd
+anatomy/models/visible_human_*_smooth.nrrd
+
+# Unreferenced large media (kept on NAS only, keeps Pages site under 1GB)
+full_video.mp4
+surviving_earth_vfx_breakdown.mp4
+assets/images/surviving_earth_vfx_breakdown.mp4

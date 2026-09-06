@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Human Skull (VTK)",
+    "url": "https://raw.githubusercontent.com/Kitware/vtk-js-datasets/master/data/nrrd/skull.nrrd",
+    "size": "9.7MB",
+    "thumbnail": "images/thumb_skull_vol.png"
+  },
+  {
+    "title": "Human Head (Three.js)",
+    "url": "https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/models/nrrd/I.nrrd",
+    "size": "6.3MB",
+    "thumbnail": "images/thumb_brain.png"
+  }
+]

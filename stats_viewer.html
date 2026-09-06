@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard - Harsh Borah Portfolio</title>
+    
+    <!-- Modern Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-primary: #0a0d14;
+            --bg-secondary: rgba(18, 22, 35, 0.7);
+            --bg-tertiary: rgba(30, 37, 56, 0.5);
+            --accent-primary: #6366f1; /* Indigo */
+            --accent-glow: rgba(99, 102, 241, 0.15);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.03) 0%, transparent 40%);
+        }
+
+        /* Glassmorphism Container */
+        .dashboard-container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 40px 20px;
+            background: var(--bg-secondary);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Header styling */
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 36px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+
+        .logo-section h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff 30%, var(--accent-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-section p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        .source-select {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 10px 16px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            outline: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .source-select:hover {
+            border-color: var(--accent-primary);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .source-select option {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        .refresh-btn {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 10px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .refresh-btn:hover {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 15px var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 36px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(99, 102, 241, 0.3);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+
+        .stat-card.success::before {
+            background: var(--success);
+        }
+
+        .stat-card.warning::before {
+            background: var(--warning);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .stat-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-top: 8px;
+            color: var(--text-primary);
+        }
+
+        /* Detail Section Grid */
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            margin-bottom: 36px;
+        }
+
+        .detail-panel {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 28px;
+        }
+
+        .panel-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-primary);
+        }
+
+        /* Progress list */
+        .progress-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .progress-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .progress-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+        }
+
+        .progress-name {
+            color: var(--text-primary);
+            font-weight: 500;
+            text-transform: capitalize;
+        }
+
+        .progress-count {
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .progress-track {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-primary), #818cf8);
+            border-radius: 4px;
+            width: 0;
+            transition: width 1s ease-out;
+        }
+
+        /* Recent Activity Table */
+        .recent-table-panel {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 28px;
+            overflow-x: auto;
+        }
+
+        .recent-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .recent-table th {
+            padding: 12px 16px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.875rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .recent-table td {
+            padding: 14px 16px;
+            font-size: 0.875rem;
+            color: var(--text-primary);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .recent-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .recent-table tbody tr {
+            transition: background 0.2s ease;
+        }
+
+        .recent-table tbody tr:hover {
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .page-tag {
+            background: rgba(99, 102, 241, 0.12);
+            color: #a5b4fc;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Auth Screen overlay */
+        .auth-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: var(--bg-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.5s ease;
+        }
+
+        .auth-card {
+            background: var(--bg-secondary);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 36px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            animation: cardSlide 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes cardSlide {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .auth-card h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .auth-card p {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-bottom: 24px;
+        }
+
+        .password-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 1rem;
+            margin-bottom: 16px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .password-input:focus {
+            border-color: var(--accent-primary);
+        }
+
+        .auth-btn {
+            width: 100%;
+            background: var(--accent-primary);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .auth-btn:hover {
+            box-shadow: 0 0 15px var(--accent-glow);
+            transform: translateY(-1px);
+        }
+
+        .auth-error {
+            color: var(--danger);
+            font-size: 0.875rem;
+            margin-top: 12px;
+            display: none;
+        }
+
+        /* Sparkline bar graph simulator for dates */
+        .date-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+            height: 120px;
+            margin-top: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .date-bar-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .date-bar {
+            width: 100%;
+            background: var(--accent-primary);
+            border-radius: 4px 4px 0 0;
+            min-height: 4px;
+            transition: height 1s ease;
+            position: relative;
+        }
+
+        .date-bar:hover {
+            background: #818cf8;
+        }
+
+        .date-bar-tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translate(-50%, -8px);
+            background: #000;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .date-bar:hover .date-bar-tooltip {
+            opacity: 1;
+        }
+
+        .date-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Dashboard Container -->
+    <div class="dashboard-container" id="dashboard-content">
+        <div class="dashboard-header">
+            <div class="logo-section">
+                <h1>📊 Portfolio Analytics</h1>
+                <p>Live engagement statistics and traffic metrics</p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <select id="data-source-select" class="source-select">
+                    <option value="relative">Local Server (localhost)</option>
+                    <option value="production">Production Site (harshcgstudios.co.uk)</option>
+                </select>
+                <button class="refresh-btn" id="refresh-btn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"></path><path d="M1 20v-6h6"></path><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                    Refresh Data
+                </button>
+            </div>
+        </div>
+
+        <!-- Big stats metrics cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Total Page Hits</div>
+                <div class="stat-value" id="total-hits">0</div>
+            </div>
+            <div class="stat-card success">
+                <div class="stat-label">Active Sections</div>
+                <div class="stat-value" id="active-sections">0</div>
+            </div>
+            <div class="stat-card warning">
+                <div class="stat-label">Recent Visits (Last 48h)</div>
+                <div class="stat-value" id="recent-visits-count">0</div>
+            </div>
+        </div>
+
+        <!-- Details Grid -->
+        <div class="details-grid">
+            <!-- Left Column: Page hits distribution -->
+            <div class="detail-panel">
+                <div class="panel-title">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+                    Traffic by Section
+                </div>
+                <div class="progress-list" id="page-list">
+                    <!-- Progress list items rendered dynamically -->
+                </div>
+            </div>
+
+            <!-- Right Column: Traffic history chart -->
+            <div class="detail-panel">
+                <div class="panel-title">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    Daily Views History
+                </div>
+                <div class="date-chart" id="date-chart">
+                    <!-- Bars rendered dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Logs Table -->
+        <div class="recent-table-panel">
+            <div class="panel-title" style="margin-bottom: 20px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                Recent Visits Log
+            </div>
+            <table class="recent-table">
+                <thead>
+                    <tr>
+                        <th>Section / Page</th>
+                        <th>IP Address</th>
+                        <th>Timestamp</th>
+                        <th>Time Ago</th>
+                    </tr>
+                </thead>
+                <tbody id="recent-list">
+                    <!-- Dynamic rows -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        let apiBase = '';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadStats();
+            
+            document.getElementById('refresh-btn').addEventListener('click', loadStats);
+
+            const sourceSelect = document.getElementById('data-source-select');
+            sourceSelect.addEventListener('change', () => {
+                const val = sourceSelect.value;
+                if (val === 'production') {
+                    apiBase = 'https://harshcgstudios.co.uk';
+                } else {
+                    apiBase = '';
+                }
+                loadStats();
+            });
+        });
+
+        async function loadStats() {
+            const refreshBtn = document.getElementById('refresh-btn');
+            refreshBtn.disabled = true;
+            refreshBtn.style.opacity = '0.7';
+            
+            try {
+                let url = `${apiBase}/api/stats/data`;
+                const response = await fetch(url);
+                if (!response.ok) throw new Error("Failed to load statistics");
+                
+                const stats = await response.json();
+                
+                // Update basic counts
+                document.getElementById('total-hits').innerText = stats.total_hits || 0;
+                
+                const pageHits = stats.hits_by_page || {};
+                const activeCount = Object.keys(pageHits).length;
+                document.getElementById('active-sections').innerText = activeCount;
+                
+                // Calculate visits in last 48 hours
+                const recentVisits = stats.recent_visits || [];
+                const now = new Date();
+                const threshold = 48 * 60 * 60 * 1000;
+                const recentCount = recentVisits.filter(v => {
+                    const t = new Date(v.timestamp);
+                    return (now - t) < threshold;
+                }).length;
+                document.getElementById('recent-visits-count').innerText = recentCount;
+                
+                // Render Page Stats
+                renderPageStats(pageHits, stats.total_hits || 1);
+                
+                // Render Date Stats
+                renderDateStats(stats.hits_by_date || {});
+                
+                // Render Recent List
+                renderRecentList(recentVisits);
+                
+            } catch (e) {
+                console.error("Error loading stats dashboard:", e);
+            } finally {
+                refreshBtn.disabled = false;
+                refreshBtn.style.opacity = '1';
+            }
+        }
+
+        function renderPageStats(pageHits, total) {
+            const listContainer = document.getElementById('page-list');
+            listContainer.innerHTML = '';
+            
+            // Sort pages by hits descending
+            const sortedPages = Object.entries(pageHits).sort((a, b) => b[1] - a[1]);
+            
+            if (sortedPages.length === 0) {
+                listContainer.innerHTML = '<div style="color:var(--text-muted);font-size:0.875rem;">No traffic recorded yet.</div>';
+                return;
+            }
+            
+            sortedPages.forEach(([name, count]) => {
+                const percent = Math.min(100, Math.round((count / total) * 100));
+                
+                const item = document.createElement('div');
+                item.className = 'progress-item';
+                item.innerHTML = `
+                    <div class="progress-labels">
+                        <span class="progress-name">${name}</span>
+                        <span class="progress-count">${count} views (${percent}%)</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-bar" style="width: 0%"></div>
+                    </div>
+                `;
+                listContainer.appendChild(item);
+                
+                // Animate progress bar width expansion
+                setTimeout(() => {
+                    item.querySelector('.progress-bar').style.width = percent + '%';
+                }, 100);
+            });
+        }
+
+        function renderDateStats(dateHits) {
+            const chartContainer = document.getElementById('date-chart');
+            chartContainer.innerHTML = '';
+            
+            // Get last 7 days sorted Chronologically
+            const dates = [];
+            for (let i = 6; i >= 0; i--) {
+                const d = new Date();
+                d.setDate(d.getDate() - i);
+                dates.push(d.toISOString().split('T')[0]);
+            }
+            
+            // Find max views to scale bars
+            const maxViews = Math.max(1, ...dates.map(date => dateHits[date] || 0));
+            
+            dates.forEach(date => {
+                const count = dateHits[date] || 0;
+                const percent = Math.round((count / maxViews) * 100);
+                
+                // Format display date (e.g. "08 Jun")
+                const parsedDate = new Date(date + 'T00:00:00');
+                const displayDate = parsedDate.toLocaleDateString('en-US', { day: '2-digit', month: 'short' });
+                
+                const barWrapper = document.createElement('div');
+                barWrapper.className = 'date-bar-wrapper';
+                barWrapper.innerHTML = `
+                    <div class="date-bar" style="height: 0%">
+                        <div class="date-bar-tooltip">${count} views on ${displayDate}</div>
+                    </div>
+                    <div class="date-label">${displayDate}</div>
+                `;
+                chartContainer.appendChild(barWrapper);
+                
+                // Animate bar height expansion
+                setTimeout(() => {
+                    barWrapper.querySelector('.date-bar').style.height = Math.max(4, percent) + '%';
+                }, 100);
+            });
+        }
+
+        function renderRecentList(recentVisits) {
+            const recentContainer = document.getElementById('recent-list');
+            recentContainer.innerHTML = '';
+            
+            if (recentVisits.length === 0) {
+                recentContainer.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--text-muted);padding:20px;">No visits recorded yet.</td></tr>';
+                return;
+            }
+            
+            recentVisits.slice(0, 10).forEach(visit => {
+                const date = new Date(visit.timestamp);
+                const displayTime = date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' }) + ' ' + date.toLocaleDateString('en-US', { day: '2-digit', month: 'short' });
+                const timeAgo = formatTimeAgo(date);
+                
+                // anonymize IP address for privacy
+                let ipDisplay = visit.ip || 'unknown';
+                if (ipDisplay.includes('.')) {
+                    // IPv4: e.g. 192.168.1.50 -> 192.168.1.xx
+                    const parts = ipDisplay.split('.');
+                    if (parts.length === 4) {
+                        ipDisplay = `${parts[0]}.${parts[1]}.${parts[2]}.xx`;
+                    }
+                }
+                
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><span class="page-tag">${visit.page}</span></td>
+                    <td style="font-family: monospace;">${ipDisplay}</td>
+                    <td>${displayTime}</td>
+                    <td style="color: var(--text-secondary);">${timeAgo}</td>
+                `;
+                recentContainer.appendChild(tr);
+            });
+        }
+
+        function formatTimeAgo(date) {
+            const now = new Date();
+            const diffSeconds = Math.max(0, Math.floor((now - date) / 1000));
+            
+            if (diffSeconds < 60) return 'Just now';
+            const diffMinutes = Math.floor(diffSeconds / 60);
+            if (diffMinutes < 60) return `${diffMinutes}m ago`;
+            const diffHours = Math.floor(diffMinutes / 60);
+            if (diffHours < 24) return `${diffHours}h ago`;
+            const diffDays = Math.floor(diffHours / 24);
+            return `${diffDays}d ago`;
+        }
+    </script>
+</body>
+</html>

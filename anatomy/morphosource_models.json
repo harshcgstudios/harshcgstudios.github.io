@@ -1,0 +1,80 @@
+[
+  {
+    "title": "Chimpanzee Skull (Mesh)",
+    "url": "/api/morphosource/download/000529210.ply",
+    "size": "18.2MB",
+    "thumbnail": "images/thumb_skull_mesh.png"
+  },
+  {
+    "title": "Capuchin Monkey Skull (Mesh)",
+    "url": "/api/morphosource/download/000529193.ply",
+    "size": "25.0MB",
+    "thumbnail": "images/thumb_skull_mesh.png"
+  },
+  {
+    "title": "Gorilla Skull (Mesh)",
+    "url": "/api/morphosource/download/000468826.ply",
+    "size": "123.8MB",
+    "thumbnail": "images/thumb_cranium.png"
+  },
+  {
+    "title": "Siamang Gibbon Skull (Mesh)",
+    "url": "/api/morphosource/download/000532547.ply",
+    "size": "100.3MB",
+    "thumbnail": "images/thumb_cranium.png"
+  },
+  {
+    "title": "Bonobo Skull (Mesh)",
+    "url": "/api/morphosource/download/000388622.ply",
+    "size": "54.3MB",
+    "thumbnail": "images/thumb_skull_mesh.png"
+  },
+  {
+    "title": "Gelada Monkey Skull (Mesh)",
+    "url": "/api/morphosource/download/000389948.ply",
+    "size": "27.6MB",
+    "thumbnail": "images/thumb_skull_mesh.png"
+  },
+  {
+    "title": "Rat-Kangaroo Skull (Mesh)",
+    "url": "/api/morphosource/download/000748181.ply",
+    "size": "55.0MB",
+    "thumbnail": "images/thumb_cranium.png"
+  },
+  {
+    "title": "oVERT Tiktaalik Fin (Mesh)",
+    "url": "/api/morphosource/download/000602356.ply",
+    "size": "115.8MB",
+    "thumbnail": "images/thumb_bone_ct.png"
+  },
+  {
+    "title": "oVERT Chameleon Skull (Mesh)",
+    "url": "/api/morphosource/download/000769445.ply",
+    "size": "116.4MB",
+    "thumbnail": "images/thumb_cranium.png"
+  },
+  {
+    "title": "oVERT Snapping Turtle Skull (Mesh)",
+    "url": "/api/morphosource/download/000010469.stl",
+    "size": "103.5MB",
+    "thumbnail": "images/thumb_skull_mesh.png"
+  },
+  {
+    "title": "oVERT Vampire Bat Wing (Mesh)",
+    "url": "/api/morphosource/download/000476294.ply",
+    "size": "15.3MB",
+    "thumbnail": "images/thumb_bird.png"
+  },
+  {
+    "title": "oVERT Hairy Frog Forelimb (Mesh)",
+    "url": "/api/morphosource/download/000602395.ply",
+    "size": "5.7MB",
+    "thumbnail": "images/thumb_bone_ct.png"
+  },
+  {
+    "title": "oVERT Tree Monitor Forelimb (Mesh)",
+    "url": "/api/morphosource/download/000600648.ply",
+    "size": "9.8MB",
+    "thumbnail": "images/thumb_bone_ct.png"
+  }
+]

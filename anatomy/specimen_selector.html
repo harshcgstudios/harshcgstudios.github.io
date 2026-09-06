@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oVert Vertebrate Scan Selector | Anatomy Lab</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: rgba(20, 30, 55, 0.45);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --card-border-hover: rgba(0, 190, 255, 0.4);
+            --text-primary: #ffffff;
+            --text-secondary: #8e9bb4;
+            --accent-blue: #00d2ff;
+            --accent-purple: #9b51e0;
+            --class-reptile: #00e676;
+            --class-mammal: #ff9100;
+            --class-bird: #2979ff;
+            --class-fish: #00b0ff;
+            --class-amphibian: #d500f9;
+            --class-human: #e040fb;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(15, 30, 90, 0.5) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(80, 15, 110, 0.3) 0%, transparent 45%);
+            background-attachment: fixed;
+            min-height: 100/vh;
+            padding-bottom: 120px;
+        }
+
+        header {
+            padding: 40px 20px;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ffffff 30%, var(--accent-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            font-weight: 400;
+            max-width: 700px;
+            margin: 0 auto 24px;
+            line-height: 1.6;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            padding: 0 20px;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 10px 20px;
+            border-radius: 30px;
+            color: var(--text-secondary);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .filter-btn:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.15), rgba(155, 81, 224, 0.15));
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .specimen-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: flex;
+            flex-direction: column;
+            height: 380px;
+        }
+
+        .specimen-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--card-border-hover);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 210, 255, 0.15);
+        }
+
+        .specimen-card.selected {
+            border-color: var(--accent-blue);
+            background: rgba(0, 30, 70, 0.45);
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.25);
+        }
+
+        .image-container {
+            width: 100%;
+            height: 180px;
+            background-color: rgba(0, 0, 0, 0.3);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .specimen-card:hover .image-container img {
+            transform: scale(1.08);
+        }
+
+        .placeholder-image {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(15, 20, 40, 0.9), rgba(5, 10, 20, 0.95));
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            position: relative;
+        }
+
+        .placeholder-image svg {
+            width: 54px;
+            height: 54px;
+            margin-bottom: 8px;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+
+        .specimen-card:hover .placeholder-image svg {
+            transform: scale(1.1);
+            opacity: 0.9;
+        }
+
+        .class-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(8px);
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .badge-reptile { color: var(--class-reptile); border: 1px solid rgba(0, 230, 118, 0.3); }
+        .badge-mammal { color: var(--class-mammal); border: 1px solid rgba(255, 145, 0, 0.3); }
+        .badge-bird { color: var(--class-bird); border: 1px solid rgba(41, 121, 255, 0.3); }
+        .badge-fish { color: var(--class-fish); border: 1px solid rgba(0, 176, 255, 0.3); }
+        .badge-amphibian { color: var(--class-amphibian); border: 1px solid rgba(213, 0, 249, 0.3); }
+        .badge-human { color: var(--class-human); border: 1px solid rgba(224, 64, 251, 0.3); }
+
+        .checkbox-overlay {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            z-index: 10;
+        }
+
+        .checkbox-overlay input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            background: rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .checkbox-overlay input[type="checkbox"]:checked {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+        }
+
+        .checkbox-overlay input[type="checkbox"]:checked::after {
+            content: '✓';
+            color: black;
+            font-size: 14px;
+            font-weight: 900;
+        }
+
+        .card-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            line-height: 1.3;
+            color: var(--text-primary);
+        }
+
+        .card-sub {
+            font-size: 0.8rem;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .card-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 12px;
+            color: var(--text-secondary);
+        }
+
+        .card-info span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .visibility-badge {
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .vis-open {
+            background: rgba(0, 230, 118, 0.1);
+            color: var(--class-reptile);
+        }
+
+        .vis-restricted {
+            background: rgba(255, 145, 0, 0.1);
+            color: var(--class-mammal);
+        }
+
+        /* Float Bar for selection */
+        .selection-bar {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 800px;
+            background: rgba(15, 22, 42, 0.85);
+            border: 1px solid var(--accent-blue);
+            border-radius: 50px;
+            padding: 16px 32px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 210, 255, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: bottom 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .selection-bar.show {
+            bottom: 30px;
+        }
+
+        .selection-text {
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .selection-text span {
+            color: var(--accent-blue);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .action-btns {
+            display: flex;
+            gap: 12px;
+        }
+
+        .action-btn {
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-cancel {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-cancel:hover {
+            color: var(--text-primary);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: black;
+            font-weight: 700;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.5);
+        }
+
+        /* Modal styling */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: rgba(15, 25, 50, 0.95);
+            border: 1px solid var(--accent-blue);
+            border-radius: 20px;
+            padding: 32px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            position: relative;
+            text-align: center;
+        }
+
+        .modal-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--accent-blue);
+        }
+
+        .modal-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .code-box {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 16px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: var(--accent-blue);
+            text-align: left;
+            overflow-x: auto;
+            margin-bottom: 24px;
+            user-select: all;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .close-modal-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .close-modal-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .btn-copy {
+            background: var(--accent-blue);
+            color: black;
+            font-weight: 700;
+            padding: 10px 24px;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-copy:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>oVert Vertebrate Specimen Selector</h1>
+        <p>Browse openVertebrate (oVert) 3D specimen reconstructions and paleontological scans from the <a href="https://sketchfab.com/ivlpaleontology" target="_blank" style="color: var(--accent-blue); text-decoration: underline;">Idaho Virtualization Laboratory</a>. Tick the boxes of the scans you want, then click submit to generate the download request list for the lab assistant.</p>
+    </header>
+
+    <div class="controls">
+        <button class="filter-btn active" onclick="filterClass('all')">All Classes</button>
+        <button class="filter-btn" onclick="filterClass('reptile')">Reptiles</button>
+        <button class="filter-btn" onclick="filterClass('mammal')">Mammals</button>
+        <button class="filter-btn" onclick="filterClass('bird')">Birds</button>
+        <button class="filter-btn" onclick="filterClass('fish')">Fish</button>
+        <button class="filter-btn" onclick="filterClass('amphibian')">Amphibians</button>
+        <button class="filter-btn" onclick="filterClass('human')">Humans</button>
+    </div>
+
+    <div class="grid-container" id="specimens-grid">
+        <!-- Dynamic Cards Inserted Here -->
+    </div>
+
+    <div class="selection-bar" id="selection-bar">
+        <div class="selection-text">
+            Selected <span id="selected-count">0</span> specimens
+        </div>
+        <div class="action-btns">
+            <button class="action-btn btn-cancel" onclick="clearSelection()">Clear</button>
+            <button class="action-btn btn-submit" onclick="submitSelection()">Confirm Selection</button>
+        </div>
+    </div>
+
+    <div class="modal" id="download-modal">
+        <div class="modal-content">
+            <button class="close-modal-btn" onclick="closeModal()">×</button>
+            <div class="modal-title">Selection Confirmed!</div>
+            <div class="modal-text">Copy the generated code block below and paste it in the chat window. The AI assistant will instantly start downloading and optimizing the chosen specimens for the lab.</div>
+            <div class="code-box" id="code-box"></div>
+            <button class="btn-copy" onclick="copyCode()">Copy Code to Clipboard</button>
+        </div>
+    </div>
+
+    <script>
+                const specimens = [
+            {
+                "id": "000446464",
+                "title": "Gila Monster",
+                "taxonomy": "Heloderma horridum",
+                "class": "reptile",
+                "size": "5995.0 MB",
+                "visibility": "open",
+                "image": "images/gila_monster_ct_thumbnail.png"
+            },
+            {
+                "id": "000029462",
+                "title": "Caicos Sphaerodactylus",
+                "taxonomy": "Sphaerodactylus caicosensis",
+                "class": "reptile",
+                "size": "1555.9 MB",
+                "visibility": "open",
+                "image": ""
+            },
+            {
+                "id": "000100312",
+                "title": "Arctic Wolf",
+                "taxonomy": "Canis lupus arctos",
+                "class": "mammal",
+                "size": "423.2 MB",
+                "visibility": "open",
+                "image": ""
+            },
+            {
+                "id": "000073103",
+                "title": "Seahorse",
+                "taxonomy": "Hippocampus erectus",
+                "class": "fish",
+                "size": "175.5 MB",
+                "visibility": "restricted_download",
+                "image": ""
+            },
+            {
+                "id": "000408242",
+                "title": "Yemen Chameleon",
+                "taxonomy": "Chamaeleo calyptratus",
+                "class": "reptile",
+                "size": "1283.2 MB",
+                "visibility": "open",
+                "image": "images/chameleon_ct_thumbnail.png"
+            },
+            {
+                "id": "000043453",
+                "title": "American Alligator",
+                "taxonomy": "Alligator mississippiensis",
+                "class": "reptile",
+                "size": "1482.7 MB",
+                "visibility": "open",
+                "image": ""
+            },
+            {
+                "id": "000057677",
+                "title": "Green Varanus",
+                "taxonomy": "Varanus prasinus",
+                "class": "reptile",
+                "size": "6354.6 MB",
+                "visibility": "open",
+                "image": ""
+            },
+            {
+                "id": "000063261",
+                "title": "Black Bear",
+                "taxonomy": "Ursus americanus",
+                "class": "mammal",
+                "size": "2147.3 MB",
+                "visibility": "restricted_download",
+                "image": ""
+            },
+            {
+                "id": "000047005",
+                "title": "European Rabbit",
+                "taxonomy": "Oryctolagus cuniculus",
+                "class": "mammal",
+                "size": "429.8 MB",
+                "visibility": "open",
+                "image": ""
+            },
+            {
+                "id": "000058657",
+                "title": "Green Anaconda",
+                "taxonomy": "Eunectes murinus",
+                "class": "reptile",
+                "size": "2536.7 MB",
+                "visibility": "open",
+                "image": ""
+            },
+            {
+                "id": "000445159",
+                "title": "Intermediate Rattlesnake",
+                "taxonomy": "Crotalus intermedius",
+                "class": "reptile",
+                "size": "369.8 MB",
+                "visibility": "open",
+                "image": ""
+            },
+            {
+                "id": "000456625",
+                "title": "Broad-Tailed Gecko",
+                "taxonomy": "Phyllurus platurus",
+                "class": "reptile",
+                "size": "661.9 MB",
+                "visibility": "open",
+                "image": ""
+            },
+            {
+                "id": "000601463",
+                "title": "Bald Eagle",
+                "taxonomy": "Haliaeetus leucocephalus",
+                "class": "bird",
+                "size": "19915.2 MB",
+                "visibility": "open",
+                "image": "images/bald_eagle_ct_thumbnail.png"
+            },
+            {
+                "id": "000445804",
+                "title": "Vampire Bat",
+                "taxonomy": "Desmodus rotundus",
+                "class": "mammal",
+                "size": "2062.4 MB",
+                "visibility": "open",
+                "image": "images/vampire_bat_ct_thumbnail.png"
+            },
+            {
+                "id": "000085076",
+                "title": "Snowy Egret",
+                "taxonomy": "Egretta thula",
+                "class": "bird",
+                "size": "908.5 MB",
+                "visibility": "restricted_download",
+                "image": ""
+            },
+            {
+                "id": "000074752",
+                "title": "White-Throated Swift",
+                "taxonomy": "Aeronautes saxatalis",
+                "class": "bird",
+                "size": "187.7 MB",
+                "visibility": "restricted_download",
+                "image": ""
+            },
+            {
+                "id": "000085399",
+                "title": "Black Skimmer",
+                "taxonomy": "Rynchops niger",
+                "class": "bird",
+                "size": "1119.8 MB",
+                "visibility": "restricted_download",
+                "image": ""
+            },
+            {
+                "id": "000086186",
+                "title": "Atlantic Puffin",
+                "taxonomy": "Fratercula arctica",
+                "class": "bird",
+                "size": "2428.5 MB",
+                "visibility": "restricted_download",
+                "image": ""
+            },
+            {
+                "id": "000065299",
+                "title": "Platypus",
+                "taxonomy": "Ornithorhynchus sp.",
+                "class": "mammal",
+                "size": "2327.3 MB",
+                "visibility": "restricted_download",
+                "image": ""
+            },
+            {
+                "id": "000064579",
+                "title": "Star-Nosed Mole",
+                "taxonomy": "Condylura cristata",
+                "class": "mammal",
+                "size": "2431.5 MB",
+                "visibility": "restricted_download",
+                "image": ""
+            },
+            {
+                "id": "000086048",
+                "title": "Short-Billed Gull",
+                "taxonomy": "Larus brachyrhynchus",
+                "class": "bird",
+                "size": "2554.3 MB",
+                "visibility": "restricted_download",
+                "image": ""
+            },
+            {
+                "id": "000064577",
+                "title": "Short-Beaked Echidna",
+                "taxonomy": "Tachyglossus aculeatus",
+                "class": "mammal",
+                "size": "2749.7 MB",
+                "visibility": "restricted_download",
+                "image": ""
+            },
+            {
+                "id": "000058004",
+                "title": "Chimpanzee",
+                "taxonomy": "Pan troglodytes",
+                "class": "mammal",
+                "size": "403.4 MB",
+                "visibility": "restricted_download",
+                "image": ""
+            },
+            {
+                "id": "000027178",
+                "title": "Hairy Frog",
+                "taxonomy": "Trichobatrachus robustus",
+                "class": "amphibian",
+                "size": "547.9 MB",
+                "visibility": "open",
+                "image": ""
+            },
+            {
+                "id": "vhp-knee-01",
+                "title": "Visible Human Female Knee",
+                "taxonomy": "Homo sapiens (Female Knee)",
+                "class": "human",
+                "size": "1.8 GB",
+                "visibility": "open",
+                "image": "images/vhp_knee_thumbnail.png"
+            },
+            {
+                "id": "vhp-ankle-02",
+                "title": "Visible Human Female Ankle",
+                "taxonomy": "Homo sapiens (Female Ankle)",
+                "class": "human",
+                "size": "1.2 GB",
+                "visibility": "open",
+                "image": "images/vhp_ankle_thumbnail.png"
+            },
+            {
+                "id": "vhp-hip-03",
+                "title": "Visible Human Female Hip",
+                "taxonomy": "Homo sapiens (Female Hip)",
+                "class": "human",
+                "size": "2.4 GB",
+                "visibility": "open",
+                "image": "images/vhp_hip_thumbnail.png"
+            },
+            {
+                "id": "vhm-knee-01",
+                "title": "Visible Human Male Knee",
+                "taxonomy": "Homo sapiens (Male Knee)",
+                "class": "human",
+                "size": "2.2 GB",
+                "visibility": "open",
+                "image": ""
+            },
+            {
+                "id": "vhm-ankle-01",
+                "title": "Visible Human Male Ankle",
+                "taxonomy": "Homo sapiens (Male Ankle)",
+                "class": "human",
+                "size": "1.6 GB",
+                "visibility": "open",
+                "image": ""
+            },
+            {
+                "id": "vhm-hip-01",
+                "title": "Visible Human Male Hip",
+                "taxonomy": "Homo sapiens (Male Hip)",
+                "class": "human",
+                "size": "3.0 GB",
+                "visibility": "open",
+                "image": ""
+            },
+            {
+                "id": "vhm-lower-extremity",
+                "title": "Visible Human Male Lower Extremity Model",
+                "taxonomy": "Homo sapiens (Male Lower Extremity)",
+                "class": "human",
+                "size": "6.8 GB",
+                "visibility": "open",
+                "image": ""
+            },
+            {
+                "id": "vhf-lower-extremity",
+                "title": "Visible Human Female Lower Extremity Model",
+                "taxonomy": "Homo sapiens (Female Lower Extremity)",
+                "class": "human",
+                "size": "5.2 GB",
+                "visibility": "open",
+                "image": ""
+            },
+            {
+                "id": "shapemed-knee-05",
+                "title": "ShapeMed Knee",
+                "taxonomy": "Homo sapiens (Knee Volume)",
+                "class": "human",
+                "size": "450.0 MB",
+                "visibility": "open",
+                "image": "images/shapemed_knee_thumbnail.png"
+            },
+            {
+                "id": "000055753",
+                "title": "Lesser Hedgehog Tenrec",
+                "taxonomy": "Echinops telfairi",
+                "class": "mammal",
+                "size": "4940.5 MB",
+                "visibility": "open",
+                "image": ""
+            }
+        ];
+
+        let selectedIds = new Set();
+
+        function getPlaceholderSVG(classType) {
+            let color = 'var(--accent-blue)';
+            if (classType === 'reptile') color = 'var(--class-reptile)';
+            if (classType === 'mammal') color = 'var(--class-mammal)';
+            if (classType === 'bird') color = 'var(--class-bird)';
+            if (classType === 'fish') color = 'var(--class-fish)';
+            if (classType === 'amphibian') color = 'var(--class-amphibian)';
+            if (classType === 'human') color = 'var(--class-human)';
+
+            return `<svg viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v20M17 5H7M19 9H5M18 13H6M17 17H7M15 21H9"/>
+                <circle cx="12" cy="4" r="2" fill="none"/>
+            </svg>`;
+        }
+
+        function buildGrid() {
+            const grid = document.getElementById('specimens-grid');
+            grid.innerHTML = '';
+
+            specimens.forEach(spec => {
+                const card = document.createElement('div');
+                card.className = `specimen-card ${selectedIds.has(spec.id) ? 'selected' : ''}`;
+                card.setAttribute('data-id', spec.id);
+                card.setAttribute('data-class', spec.class);
+                card.onclick = (e) => toggleSelect(e, spec.id);
+
+                let mediaContent = '';
+                if (spec.image) {
+                    mediaContent = `<img src="${spec.image}" alt="${spec.title}">`;
+                } else {
+                    mediaContent = `<div class="placeholder-image">
+                        ${getPlaceholderSVG(spec.class)}
+                        <span style="font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase;">Volume CT Scan</span>
+                    </div>`;
+                }
+
+                card.innerHTML = `
+                    <div class="checkbox-overlay">
+                        <input type="checkbox" id="check-${spec.id}" ${selectedIds.has(spec.id) ? 'checked' : ''} onclick="event.stopPropagation(); toggleSelect(event, '${spec.id}')">
+                    </div>
+                    <div class="class-badge badge-${spec.class}">${spec.class}</div>
+                    <div class="image-container">
+                        ${mediaContent}
+                    </div>
+                    <div class="card-content">
+                        <div>
+                            <div class="card-title">${spec.title}</div>
+                            <div class="card-sub">${spec.taxonomy}</div>
+                        </div>
+                        <div class="card-info">
+                            <span>ID: ${spec.id}</span>
+                            <span>${spec.size}</span>
+                            <span class="visibility-badge ${spec.visibility === 'open' ? 'vis-open' : 'vis-restricted'}">
+                                ${spec.visibility === 'open' ? 'open' : 'restricted'}
+                            </span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function toggleSelect(e, id) {
+            // Prevent duplicate toggling if triggered from checkbox click
+            if (e.target.type === 'checkbox') {
+                if (e.target.checked) {
+                    selectedIds.add(id);
+                } else {
+                    selectedIds.delete(id);
+                }
+            } else {
+                const check = document.getElementById(`check-${id}`);
+                if (selectedIds.has(id)) {
+                    selectedIds.delete(id);
+                    check.checked = false;
+                } else {
+                    selectedIds.add(id);
+                    check.checked = true;
+                }
+            }
+
+            // Update card UI class
+            const cards = document.querySelectorAll('.specimen-card');
+            cards.forEach(card => {
+                if (card.getAttribute('data-id') === id) {
+                    if (selectedIds.has(id)) {
+                        card.classList.add('selected');
+                    } else {
+                        card.classList.remove('selected');
+                    }
+                }
+            });
+
+            updateBar();
+        }
+
+        function updateBar() {
+            const bar = document.getElementById('selection-bar');
+            const countSpan = document.getElementById('selected-count');
+            countSpan.textContent = selectedIds.size;
+
+            if (selectedIds.size > 0) {
+                bar.classList.add('show');
+            } else {
+                bar.classList.remove('show');
+            }
+        }
+
+        function clearSelection() {
+            selectedIds.clear();
+            const checkboxes = document.querySelectorAll('.checkbox-overlay input');
+            checkboxes.forEach(c => c.checked = false);
+            const cards = document.querySelectorAll('.specimen-card');
+            cards.forEach(c => c.classList.remove('selected'));
+            updateBar();
+        }
+
+        function filterClass(classFilter) {
+            // Update active button
+            const btns = document.querySelectorAll('.filter-btn');
+            btns.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const cards = document.querySelectorAll('.specimen-card');
+            cards.forEach(card => {
+                const c = card.getAttribute('data-class');
+                if (classFilter === 'all' || c === classFilter) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function submitSelection() {
+            const modal = document.getElementById('download-modal');
+            const codeBox = document.getElementById('code-box');
+            
+            const selectedList = [];
+            selectedIds.forEach(id => {
+                const spec = specimens.find(s => s.id === id);
+                if (spec) {
+                    selectedList.push({ id: spec.id, title: spec.title, taxonomy: spec.taxonomy });
+                }
+            });
+
+            const textOutput = `DOWNLOAD_VERT_SCANS: ${JSON.stringify(selectedList, null, 2)}`;
+            codeBox.textContent = textOutput;
+            modal.classList.add('show');
+        }
+
+        function closeModal() {
+            document.getElementById('download-modal').classList.remove('show');
+        }
+
+        function copyCode() {
+            const codeBox = document.getElementById('code-box');
+            navigator.clipboard.writeText(codeBox.textContent).then(() => {
+                const copyBtn = document.querySelector('.btn-copy');
+                const origText = copyBtn.textContent;
+                copyBtn.textContent = 'Copied Successfully!';
+                copyBtn.style.background = 'var(--class-reptile)';
+                setTimeout(() => {
+                    copyBtn.textContent = origText;
+                    copyBtn.style.background = 'var(--accent-blue)';
+                }, 2000);
+            });
+        }
+
+        // Initialize grid
+        buildGrid();
+    </script>
+</body>
+</html>
