@@ -122,12 +122,15 @@ document.addEventListener('DOMContentLoaded', () => {
     sidebarOverlay.addEventListener('click', closeSidebar);
   }
 
+  // Large full-body volumes live on the NAS (over GitHub's file limit) - absolute host
+  const NAS_MODELS_BASE = 'https://nas-models.harshcgstudios.co.uk/anatomy/models';
+
   const getRedirectedUrl = (url) => {
     const urlLower = url.toLowerCase();
     if (urlLower.includes('visible_human_female_whole_body') || urlLower.includes('visible_human_female_whole_body_highres')) {
-      return 'models/visible_human_female_whole_body_balanced.nrrd';
+      return NAS_MODELS_BASE + '/visible_human_female_whole_body_balanced.nrrd';
     } else if (urlLower.includes('visible_human_whole_body') || urlLower.includes('visible_human_whole_body_highres')) {
-      return 'models/visible_human_whole_body_balanced.nrrd';
+      return NAS_MODELS_BASE + '/visible_human_whole_body_balanced.nrrd';
     }
     return url;
   };
