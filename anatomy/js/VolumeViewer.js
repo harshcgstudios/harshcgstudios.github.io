@@ -393,8 +393,10 @@ export class VolumeViewer {
     }
 
     // Encode the URI path segments to support spaces in filenames/folders (e.g. RISD models)
+    // Skip encoding for absolute http(s) URLs (browsers handle them; encoding would break "https://")
     let fetchUrl = url;
-    if (!url.startsWith('blob:') && !url.startsWith('data:')) {
+    const isAbsoluteUrl = /^[a-zA-Z][a-zA-Z0-9+.-]*:\/\//.test(url);
+    if (!url.startsWith('blob:') && !url.startsWith('data:') && !isAbsoluteUrl) {
       const [path, query] = url.split('?');
       const encodedPath = path.split('/').map(segment => encodeURIComponent(segment)).join('/');
       fetchUrl = query ? `${encodedPath}?${query}` : encodedPath;

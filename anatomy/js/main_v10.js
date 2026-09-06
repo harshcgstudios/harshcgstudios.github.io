@@ -1,4 +1,4 @@
-import { VolumeViewer } from './VolumeViewer.js?v=10.7';
+import { VolumeViewer } from './VolumeViewer.js?v=10.8';
 
 document.addEventListener('DOMContentLoaded', () => {
   const loaderEl = document.getElementById('loader');
