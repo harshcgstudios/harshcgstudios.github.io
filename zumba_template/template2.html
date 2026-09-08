@@ -1,0 +1,1845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zumba With Me - High Energy Dance Fitness</title>
+    <!-- Google Fonts: Marker & Brush Styles matching the image -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Caveat:wght@600;700&family=Montserrat:ital,wght@0,400;0,600;0,800;0,900;1,900&family=Kaushan+Script&family=Satisfy&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --zumba-yellow: #ffee00;
+            --zumba-pink: #ff007f;
+            --zumba-cyan: #00d2ff;
+            --zumba-orange: #ff6b00;
+            --zumba-purple: #7928ca;
+            --zumba-green: #39ff14;
+            --dark-bg: #0d0d18;
+            --text-dark: #111111;
+            --text-light: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: 
+                radial-gradient(circle at 10% 12%, rgba(248, 26, 191, 0.80) 0%, transparent 42%),
+                radial-gradient(circle at 90% 18%, rgba(60, 251, 208, 0.75) 0%, transparent 45%),
+                radial-gradient(circle at 50% 45%, rgba(253, 207, 59, 0.65) 0%, transparent 45%),
+                radial-gradient(circle at 15% 72%, rgba(194, 240, 72, 0.75) 0%, transparent 45%),
+                radial-gradient(circle at 85% 82%, rgba(60, 251, 208, 0.80) 0%, transparent 45%),
+                linear-gradient(175deg, #fa5290 0%, #fa8c67 18%, #fdcf3b 38%, #c2f048 62%, #82f785 78%, #3cfbd0 100%);
+            background-attachment: fixed;
+            color: #111111;
+            overflow-x: hidden;
+        }
+
+        /* -------------------------------------------------------------
+           TOP HEADER (Black bar with yellow logo & pink Book button)
+        ------------------------------------------------------------- */
+        header.top-header {
+            background-color: #000000;
+            padding: 14px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            fill: var(--zumba-yellow);
+            animation: bounceLogo 2s infinite ease-in-out;
+            flex-shrink: 0;
+        }
+
+        @keyframes bounceLogo {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-4px) rotate(-6deg); }
+        }
+
+        .logo-script-wrap {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-words-row {
+            font-family: 'Kaushan Script', cursive;
+            font-size: 1.45rem;
+            line-height: 1;
+            display: flex;
+            gap: 5px;
+        }
+
+        .logo-words-row .pink { color: var(--zumba-pink); }
+        .logo-words-row .yellow { color: var(--zumba-yellow); }
+        .logo-words-row .cyan { color: var(--zumba-cyan); }
+
+        .logo-script-sub {
+            display: block;
+            font-family: 'Caveat', cursive;
+            font-size: 1rem;
+            color: #ffffff;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-top: 1px;
+        }
+
+        nav.header-nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        nav.header-nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 700;
+            transition: color 0.2s, border-color 0.2s;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        nav.header-nav a.active {
+            color: #ffffff;
+            border-bottom: 3px solid var(--zumba-pink);
+        }
+
+        nav.header-nav a:hover {
+            color: var(--zumba-pink);
+        }
+
+        .header-cta-btn {
+            background: var(--zumba-pink);
+            color: #ffffff;
+            padding: 10px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 0.9rem;
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .header-cta-btn:hover {
+            transform: scale(1.06);
+            box-shadow: 0 0 25px var(--zumba-pink);
+        }
+
+        /* -------------------------------------------------------------
+           HERO SECTION: Continuous Video Background + Crayon Streaks
+        ------------------------------------------------------------- */
+        .hero-banner {
+            position: relative;
+            width: 100%;
+            min-height: 600px;
+            height: clamp(580px, 78vh, 760px);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            background: #000;
+        }
+
+        /* -------------------------------------------------------------
+           HERO CENTER VIDEO STAGE: Cropped & Fitted between Yellow & Pink
+           (Fitted to 9:16 natural reel ratio so full choreography is visible)
+        ------------------------------------------------------------- */
+        .hero-video-bg {
+            position: absolute;
+            top: 0;
+            left: 53%;
+            transform: translateX(-50%);
+            height: 100%;
+            aspect-ratio: 9 / 16;
+            max-width: 520px;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #000000;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.85);
+            transition: width 0.3s ease, aspect-ratio 0.3s ease;
+        }
+
+        .hero-video-bg video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            filter: brightness(1.0) contrast(1.05) saturate(1.15);
+        }
+
+        .hero-video-bg video.active {
+            opacity: 1;
+        }
+
+        /* Wide stage mode toggle */
+        .hero-video-bg.wide-stage {
+            aspect-ratio: auto;
+            width: clamp(440px, 42vw, 620px);
+        }
+
+        /* -------------------------------------------------------------
+           HERO PAINT SPLASHES (Framing the Video on Left & Right)
+        ------------------------------------------------------------- */
+        .hero-left-paint-splash {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 48%;
+            min-width: 440px;
+            max-width: 680px;
+            height: 100%;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .hero-left-paint-splash svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .hero-right-paint-splash {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            min-width: 340px;
+            max-width: 540px;
+            height: 100%;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .hero-right-paint-splash svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* Content Container over Video & Splashes */
+        .hero-content-wrap {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 1340px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Left Side: Headline directly over Yellow Paint Splash */
+        .hero-headline-block {
+            max-width: 490px;
+            padding: 20px 0;
+            background: transparent;
+            backdrop-filter: none;
+            box-shadow: none;
+            border: none;
+            transform: none;
+        }
+
+        .hero-title-dance {
+            font-family: 'Kaushan Script', cursive;
+            font-size: clamp(4.5rem, 7.5vw, 6.4rem);
+            line-height: 0.88;
+            color: var(--zumba-pink);
+            transform: rotate(-3deg);
+            display: block;
+            margin-left: 6px;
+            letter-spacing: -1px;
+            text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-title-sweat {
+            font-family: 'Permanent Marker', cursive;
+            font-size: clamp(4.2rem, 7.2vw, 5.8rem);
+            line-height: 0.90;
+            color: #111111;
+            transform: rotate(-1deg);
+            display: block;
+            margin-left: 24px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-title-smile-wrap {
+            display: flex;
+            align-items: center;
+            line-height: 0.88;
+            margin-left: -2px;
+        }
+
+        .hero-title-smile {
+            font-family: 'Kaushan Script', cursive;
+            font-size: clamp(4.6rem, 7.8vw, 6.5rem);
+            color: var(--zumba-cyan);
+            transform: rotate(-2deg);
+            letter-spacing: -1px;
+            text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.4);
+        }
+
+        .hero-heart-doodle {
+            font-family: 'Caveat', cursive;
+            font-size: clamp(3.6rem, 6vw, 4.8rem);
+            color: var(--zumba-pink);
+            font-weight: 700;
+            transform: rotate(14deg);
+            margin-left: 12px;
+            line-height: 0.8;
+            display: inline-block;
+        }
+
+        .hero-author-script {
+            font-family: 'Caveat', cursive;
+            font-size: clamp(2.4rem, 3.6vw, 3.2rem);
+            color: #111111;
+            font-weight: 700;
+            margin: 6px 0 16px 20px;
+            display: inline-block;
+            transform: rotate(-2deg);
+            position: relative;
+        }
+
+        .hero-author-script::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 25%;
+            width: 75%;
+            height: 4px;
+            background: #111111;
+            border-radius: 3px;
+            transform: rotate(-1deg);
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #111111;
+            line-height: 1.45;
+            margin-bottom: 24px;
+            max-width: 440px;
+        }
+
+        .hero-book-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--zumba-pink);
+            color: #ffffff;
+            padding: 16px 38px;
+            border-radius: 40px;
+            font-size: 1.15rem;
+            font-weight: 900;
+            text-decoration: none;
+            box-shadow: 0 8px 25px rgba(255, 0, 127, 0.55);
+            transition: transform 0.25s, background 0.25s, box-shadow 0.25s;
+        }
+
+        .hero-book-btn:hover {
+            transform: scale(1.08) translateY(-2px);
+            background: #d6006b;
+            box-shadow: 0 12px 30px rgba(255, 0, 127, 0.8);
+        }
+
+        /* Right Side: "Good Vibes Only ♡" over Magenta/Cyan Splash */
+        .hero-right-badge {
+            background: transparent;
+            backdrop-filter: none;
+            padding: 0;
+            border-radius: 0;
+            transform: rotate(8deg);
+            box-shadow: none;
+            border: none;
+            text-align: center;
+            margin-right: 35px;
+        }
+
+        .good-vibes-text {
+            font-family: 'Kaushan Script', cursive;
+            font-size: clamp(3.2rem, 5.2vw, 4.8rem);
+            color: var(--zumba-yellow);
+            line-height: 0.95;
+            font-weight: 700;
+            text-shadow: 2px 4px 10px rgba(0,0,0,0.35);
+            text-align: center;
+            display: block;
+        }
+
+        .vibes-heart-doodle {
+            font-family: 'Caveat', cursive;
+            font-size: 1.15em;
+            display: block;
+            margin-top: 4px;
+            color: var(--zumba-yellow);
+        }
+
+        /* Top Progress Bar for Video Playlist */
+        .video-progress-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 20;
+        }
+
+        .video-progress-fill {
+            height: 100%;
+            width: 0%;
+            background: var(--zumba-pink);
+            box-shadow: 0 0 10px var(--zumba-pink);
+            transition: width 0.1s linear;
+        }
+
+        /* Floating Video Controls in Hero */
+        .hero-video-controls {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            z-index: 25;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 8px 16px;
+            border-radius: 30px;
+            backdrop-filter: blur(6px);
+            border: 1px solid var(--zumba-yellow);
+        }
+
+        .hero-ctrl-btn {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.2s;
+        }
+
+        .hero-ctrl-btn:hover {
+            color: var(--zumba-yellow);
+        }
+
+        .hero-track-name {
+            font-size: 0.85rem;
+            color: var(--zumba-yellow);
+            font-weight: 800;
+        }
+
+        /* -------------------------------------------------------------
+           SECTION 2: "WATCH ME MOVE" VIDEO CARDS
+        ------------------------------------------------------------- */
+        .watch-me-section {
+            padding: 60px 40px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .watch-me-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .watch-me-title-wrap h2 {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 3.2rem;
+            color: #ffffff;
+            margin-bottom: 14px;
+            position: relative;
+            display: inline-block;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.45);
+        }
+
+        .watch-me-title-wrap h2::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100%;
+            height: 7px;
+            background: #000000;
+            border-radius: 4px;
+            transform: rotate(-1deg);
+        }
+
+        .watch-me-title-wrap p {
+            font-size: 1.15rem;
+            color: #ffffff;
+            max-width: 550px;
+            font-weight: 700;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .view-more-btn {
+            background: var(--zumba-pink);
+            color: #ffffff;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(255, 0, 127, 0.4);
+            transition: transform 0.2s;
+        }
+
+        .view-more-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .watch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .watch-card {
+            background: rgba(0, 0, 0, 0.65);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            cursor: pointer;
+        }
+
+        .watch-card:hover {
+            transform: translateY(-8px);
+            border-color: #ffffff;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+        }
+
+        .watch-thumbnail-box {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .watch-thumbnail-box video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+            display: block;
+        }
+
+        .watch-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 0, 127, 0.85);
+            border: 3px solid #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.4);
+            transition: transform 0.2s;
+        }
+
+        .watch-play-btn::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 16px solid #ffffff;
+            margin-left: 3px;
+        }
+
+        .watch-card:hover .watch-play-btn {
+            transform: translate(-50%, -50%) scale(1.15);
+            background: var(--zumba-yellow);
+        }
+        .watch-card:hover .watch-play-btn::after {
+            border-left-color: #000;
+        }
+
+        .watch-duration-badge {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            background: rgba(0, 0, 0, 0.75);
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+
+        .watch-card-info {
+            padding: 20px;
+        }
+
+        .watch-card-info h3 {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .watch-card-info p {
+            font-size: 0.9rem;
+            color: var(--zumba-cyan);
+            font-weight: 700;
+        }
+
+        /* -------------------------------------------------------------
+           SECTION 3: "MY CLASSES" YELLOW BRUSH BANNER + 5 CIRCLES
+        ------------------------------------------------------------- */
+        .classes-banner-section {
+            background: var(--zumba-yellow);
+            padding: 70px 40px 90px 40px;
+            position: relative;
+            /* Authentic jagged dry-brush bristle ripped edges matching reference image */
+            clip-path: polygon(
+                0 38px, 3% 18px, 6% 36px, 10% 12px, 14% 32px, 18% 8px, 22% 35px, 27% 10px, 32% 38px, 38% 15px, 44% 32px, 50% 8px, 56% 35px, 62% 14px, 68% 36px, 74% 18px, 80% 35px, 86% 10px, 92% 32px, 96% 15px, 100% 28px,
+                100% calc(100% - 28px), 97% calc(100% - 12px), 93% calc(100% - 35px), 88% calc(100% - 10px), 82% calc(100% - 38px), 76% calc(100% - 16px), 70% calc(100% - 35px), 64% calc(100% - 8px), 58% calc(100% - 36px), 52% calc(100% - 20px), 46% calc(100% - 38px), 40% calc(100% - 12px), 34% calc(100% - 35px), 28% calc(100% - 10px), 22% calc(100% - 36px), 16% calc(100% - 18px), 10% calc(100% - 32px), 5% calc(100% - 12px), 0 calc(100% - 32px)
+            );
+            margin: 50px 0;
+        }
+
+        .classes-content-wrap {
+            max-width: 1300px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .classes-title {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 3.8rem;
+            color: #000000;
+            margin-bottom: 10px;
+            transform: rotate(-1deg);
+            position: relative;
+            display: inline-block;
+        }
+
+        .classes-title::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 10%;
+            width: 80%;
+            height: 7px;
+            background: var(--zumba-pink);
+            border-radius: 4px;
+            transform: rotate(0.5deg);
+        }
+
+        .classes-subtitle {
+            font-family: 'Caveat', cursive;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #222222;
+            margin-bottom: 50px;
+        }
+
+        .classes-circles-row {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: clamp(20px, 4vw, 45px);
+            flex-wrap: wrap;
+        }
+
+        .class-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 180px;
+            cursor: pointer;
+        }
+
+        .class-circle {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .class-circle.pink { background: var(--zumba-pink); }
+        .class-circle.cyan { background: var(--zumba-cyan); }
+        .class-circle.orange { background: var(--zumba-orange); }
+        .class-circle.purple { background: var(--zumba-purple); }
+        .class-circle.green { background: #4cd964; }
+
+        /* Silhouette dancer SVG */
+        .class-dancer-svg {
+            width: 65%;
+            height: 65%;
+            fill: #000000;
+            transform-origin: bottom center;
+            transition: transform 0.3s;
+        }
+
+        /* Hover animation: Dancer silhouettes dance! */
+        .class-item:hover .class-circle {
+            transform: scale(1.15) translateY(-6px);
+        }
+
+        .class-item:hover .class-dancer-svg {
+            animation: classDance 0.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes classDance {
+            0% { transform: rotate(-12deg) scale(1.1); }
+            50% { transform: translateY(-8px) rotate(0deg) scale(1.2); }
+            100% { transform: rotate(12deg) scale(1.1); }
+        }
+
+        .class-name {
+            font-size: 1.25rem;
+            font-weight: 900;
+            color: #000000;
+            margin-top: 16px;
+        }
+
+        .class-desc {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #333333;
+            line-height: 1.35;
+            margin-top: 4px;
+        }
+
+        /* -------------------------------------------------------------
+           SECTION 4: "ABOUT ME" (Photo badge + Details + 4 Icons)
+        ------------------------------------------------------------- */
+        .about-section {
+            padding: 60px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-graphic-card {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(255, 0, 127, 0.3);
+            height: 480px;
+            background: linear-gradient(135deg, #ff007f 0%, #ff6b00 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 30px;
+        }
+
+        .about-card-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+            filter: contrast(1.1) brightness(0.85);
+        }
+
+        .about-overlay-text {
+            position: relative;
+            z-index: 5;
+        }
+
+        .move-dance-text {
+            font-family: 'Caveat', cursive;
+            font-size: 3.8rem;
+            line-height: 0.95;
+            color: #ffffff;
+            font-weight: 700;
+            text-shadow: 2px 4px 8px rgba(0,0,0,0.6);
+        }
+
+        .about-info-col h2 {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 3.2rem;
+            color: #000000;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 8px rgba(255, 255, 255, 0.5);
+        }
+
+        .about-info-col h2::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 70%;
+            height: 6px;
+            background: var(--zumba-pink);
+            border-radius: 3px;
+        }
+
+        .about-info-col p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #111111;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .about-features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-bottom: 35px;
+        }
+
+        .feat-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 12px 18px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .feat-item:hover {
+            transform: translateX(6px);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .feat-icon-badge {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: var(--zumba-pink);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(255, 0, 127, 0.4);
+        }
+
+        .feat-text {
+            font-size: 1rem;
+            font-weight: 800;
+            color: #000000;
+        }
+
+        .story-btn {
+            background: var(--zumba-pink);
+            color: #ffffff;
+            padding: 14px 34px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.05rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 6px 20px rgba(255, 0, 127, 0.4);
+            transition: transform 0.2s;
+        }
+
+        .story-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* -------------------------------------------------------------
+           SECTION 5: "WHAT MY DANCERS SAY" TESTIMONIALS (Pink Banner)
+        ------------------------------------------------------------- */
+        .testimonials-banner {
+            background: var(--zumba-pink);
+            padding: 70px 40px;
+            color: #ffffff;
+            margin: 50px 0;
+            /* Authentic jagged dry-brush bristle ripped edges */
+            clip-path: polygon(
+                0 30px, 4% 12px, 8% 32px, 13% 8px, 18% 30px, 24% 10px, 30% 34px, 36% 14px, 42% 30px, 48% 8px, 54% 32px, 60% 12px, 66% 34px, 72% 16px, 78% 30px, 84% 8px, 90% 28px, 95% 12px, 100% 24px,
+                100% calc(100% - 24px), 96% calc(100% - 10px), 91% calc(100% - 30px), 85% calc(100% - 8px), 80% calc(100% - 32px), 74% calc(100% - 14px), 68% calc(100% - 30px), 62% calc(100% - 8px), 56% calc(100% - 32px), 50% calc(100% - 16px), 44% calc(100% - 34px), 38% calc(100% - 10px), 32% calc(100% - 30px), 26% calc(100% - 8px), 20% calc(100% - 32px), 14% calc(100% - 14px), 8% calc(100% - 28px), 4% calc(100% - 10px), 0 calc(100% - 26px)
+            );
+        }
+
+        .testimonials-wrap {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .testi-header-col {
+            max-width: 320px;
+        }
+
+        .testi-header-col h2 {
+            font-family: 'Caveat', cursive;
+            font-size: 3.6rem;
+            line-height: 1;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+            position: relative;
+            display: inline-block;
+        }
+
+        .testi-header-col h2::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 85%;
+            height: 6px;
+            background: var(--zumba-yellow);
+            border-radius: 3px;
+            transform: rotate(-1.5deg);
+        }
+
+        .testi-cards-row {
+            display: flex;
+            gap: 30px;
+            flex: 1;
+            flex-wrap: wrap;
+        }
+
+        .testi-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex: 1;
+            min-width: 250px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 18px;
+            border-radius: 16px;
+            backdrop-filter: blur(6px);
+        }
+
+        .testi-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 3px solid #ffffff;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .testi-text-box p {
+            font-size: 0.92rem;
+            font-style: italic;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 6px;
+        }
+
+        .testi-author {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--zumba-yellow);
+        }
+
+        .testi-stars {
+            color: var(--zumba-yellow);
+            font-size: 0.85rem;
+        }
+
+        /* -------------------------------------------------------------
+           SECTION 6: "READY TO DANCE?" BOTTOM CTA BAR
+        ------------------------------------------------------------- */
+        .ready-bar {
+            background: var(--zumba-yellow);
+            padding: 30px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1300px;
+            margin: 0 auto 50px auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .ready-left-group {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .ready-dancer-icon {
+            width: 50px;
+            height: 60px;
+            fill: #000000;
+        }
+
+        .ready-text-group h3 {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 2.2rem;
+            color: #000000;
+            line-height: 1;
+        }
+
+        .ready-text-group p {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #333333;
+            margin-top: 4px;
+        }
+
+        .ready-btn {
+            background: #000000;
+            color: #ffffff;
+            padding: 16px 36px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .ready-btn:hover {
+            transform: scale(1.06);
+            background: #222222;
+        }
+
+        .ready-doodle {
+            font-family: 'Caveat', cursive;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #000000;
+            line-height: 0.95;
+            text-align: center;
+        }
+
+        /* -------------------------------------------------------------
+           FOOTER (Black with social icons and Dare to Dance doodle)
+        ------------------------------------------------------------- */
+        footer.site-footer {
+            background: #000000;
+            padding: 40px;
+            color: #888888;
+        }
+
+        .footer-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer-social-link {
+            color: #ffffff;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-social-link:hover {
+            color: var(--zumba-pink);
+        }
+
+        .footer-nav {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .footer-nav a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .footer-nav a:hover {
+            color: var(--zumba-yellow);
+        }
+
+        .footer-doodle {
+            font-family: 'Caveat', cursive;
+            font-size: 2.4rem;
+            color: var(--zumba-pink);
+            font-weight: 700;
+            transform: rotate(-6deg);
+        }
+
+        .footer-copy {
+            text-align: center;
+            font-size: 0.8rem;
+            margin-top: 30px;
+            color: #555555;
+            font-weight: 700;
+        }
+
+        /* -------------------------------------------------------------
+           TEMPLATE SWITCHER FLOATING BUTTON
+        ------------------------------------------------------------- */
+        .template-switch-pill {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #000;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 0.95rem;
+            border: 2px solid var(--zumba-yellow);
+            box-shadow: 0 0 20px rgba(255, 238, 0, 0.4);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s;
+        }
+        .template-switch-pill:hover {
+            transform: scale(1.08);
+            background: var(--zumba-pink);
+            border-color: #fff;
+        }
+
+        /* Modal for Watch Me Move cards */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-inner {
+            position: relative;
+            width: 90%;
+            max-width: 860px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 3px solid var(--zumba-pink);
+        }
+        .modal-inner video {
+            width: 100%;
+            display: block;
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #000;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            cursor: pointer;
+            border: 2px solid var(--zumba-yellow);
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP HEADER (Black bar matching uploaded image) -->
+    <header class="top-header">
+        <a href="#home" class="logo-group">
+            <svg class="logo-icon" viewBox="0 0 100 120">
+                <circle cx="50" cy="18" r="12"/>
+                <path d="M50,30 C60,30 75,38 78,55 C80,68 70,82 66,90 C62,98 62,112 60,118 L48,118 C50,110 52,96 46,90 C40,84 32,70 34,55 C36,38 42,30 50,30 Z"/>
+                <path d="M34,55 C25,48 15,35 12,22 C10,18 6,20 8,26 C12,42 22,58 34,65 Z"/>
+                <path d="M78,55 C88,62 94,75 96,88 C97,92 101,90 99,85 C96,70 88,52 78,45 Z"/>
+            </svg>
+            <div class="logo-script-wrap">
+                <div class="logo-words-row">
+                    <span class="pink">Dance</span>
+                    <span class="yellow">Sweat</span>
+                    <span class="cyan">Smile</span>
+                </div>
+                <span class="logo-script-sub">with Michelle ♡</span>
+            </div>
+        </a>
+
+        <nav class="header-nav">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#classes">Classes</a>
+            <a href="#videos">Videos</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <a href="#contact" class="header-cta-btn">Book a Class &rsaquo;</a>
+    </header>
+
+    <!-- -------------------------------------------------------------
+         HERO SECTION: Continuous Video Background + Authentic Paint Splashes
+    ------------------------------------------------------------- -->
+    <section class="hero-banner" id="home">
+        <!-- Live Video Playlist playing continuously in background -->
+        <div class="hero-video-bg">
+            <video id="heroVid1" class="active" autoplay muted playsinline src="videos/zumba_dance.mp4" preload="auto"></video>
+            <video id="heroVid2" muted playsinline preload="auto"></video>
+        </div>
+
+        <!-- Left Yellow Paint Splash (Behind Headline Text) -->
+        <div class="hero-left-paint-splash">
+            <svg class="splash-svg-left" viewBox="0 0 720 740" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <filter id="paintEdgeGrunge" x="-10%" y="-10%" width="120%" height="120%">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+                        <feDisplacementMap in="SourceGraphic" in2="noise" scale="9" xChannelSelector="R" yChannelSelector="G" />
+                    </filter>
+                    <linearGradient id="yellowPaintGrad" x1="0%" y1="0%" x2="100%" y2="80%">
+                        <stop offset="0%" stop-color="#ff9900" />
+                        <stop offset="12%" stop-color="#ffbb00" />
+                        <stop offset="35%" stop-color="#ffee00" />
+                        <stop offset="85%" stop-color="#ffee00" />
+                        <stop offset="100%" stop-color="#ffe600" />
+                    </linearGradient>
+                </defs>
+                <!-- Main Yellow Paint Splash with Dry Brush Ragged Edges -->
+                <path filter="url(#paintEdgeGrunge)" d="M 0,0 
+                         L 600,0 
+                         C 615,35 580,75 625,115 
+                         C 655,145 600,185 635,230 
+                         C 660,265 595,295 640,345 
+                         C 670,380 610,420 645,475 
+                         C 665,515 590,555 620,610 
+                         C 635,640 575,690 585,740 
+                         L 0,740 Z" fill="url(#yellowPaintGrad)" />
+                <!-- Top Orange Paint Streak -->
+                <path filter="url(#paintEdgeGrunge)" d="M 0,0 L 320,0 C 290,45 320,80 260,110 C 200,135 150,120 90,165 C 45,185 0,160 0,150 Z" fill="#ff6b00" opacity="0.6" />
+                <!-- Splatter Droplets & Flying Specks on Right Edge -->
+                <g class="paint-droplets">
+                    <circle cx="635" cy="85" r="7" fill="#ffee00" />
+                    <circle cx="660" cy="115" r="4.5" fill="#ffee00" />
+                    <circle cx="648" cy="175" r="6" fill="#ffee00" />
+                    <circle cx="672" cy="245" r="8" fill="#ffee00" />
+                    <circle cx="650" cy="305" r="5" fill="#ffee00" />
+                    <circle cx="675" cy="385" r="7.5" fill="#ffee00" />
+                    <circle cx="645" cy="460" r="5" fill="#ffee00" />
+                    <circle cx="668" cy="530" r="6" fill="#ffee00" />
+                    <!-- Magenta / Pink splatter droplets -->
+                    <circle cx="610" cy="45" r="6.5" fill="#ff007f" />
+                    <circle cx="645" cy="65" r="4" fill="#ff007f" />
+                    <circle cx="665" cy="140" r="7" fill="#ff007f" />
+                    <circle cx="640" cy="270" r="5.5" fill="#ff007f" />
+                    <circle cx="662" cy="350" r="4.5" fill="#ff007f" />
+                    <circle cx="670" cy="430" r="6" fill="#ff007f" />
+                    <circle cx="635" cy="570" r="5" fill="#ff007f" />
+                    <!-- Cyan splatter droplets -->
+                    <circle cx="620" cy="205" r="5" fill="#00d2ff" />
+                    <circle cx="655" cy="210" r="3.5" fill="#00d2ff" />
+                    <circle cx="648" cy="495" r="6" fill="#00d2ff" />
+                    <circle cx="665" cy="610" r="4.5" fill="#00d2ff" />
+                </g>
+            </svg>
+        </div>
+
+        <!-- Right Magenta & Cyan Paint Splash (Behind Good Vibes Only) -->
+        <div class="hero-right-paint-splash">
+            <svg class="splash-svg-right" viewBox="0 0 560 560" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <filter id="paintEdgeGrungeR" x="-10%" y="-10%" width="120%" height="120%">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noiseR" />
+                        <feDisplacementMap in="SourceGraphic" in2="noiseR" scale="8" xChannelSelector="R" yChannelSelector="G" />
+                    </filter>
+                    <linearGradient id="magentaPaintGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ff0066" />
+                        <stop offset="50%" stop-color="#ff007f" />
+                        <stop offset="100%" stop-color="#d6006b" />
+                    </linearGradient>
+                    <linearGradient id="cyanPaintGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#00f2fe" />
+                        <stop offset="100%" stop-color="#00d2ff" />
+                    </linearGradient>
+                </defs>
+                <!-- Cyan paint splash top -->
+                <path filter="url(#paintEdgeGrungeR)" d="M 140,0 L 560,0 L 560,190 C 490,160 430,170 360,120 C 290,70 210,90 140,0 Z" fill="url(#cyanPaintGrad)" opacity="0.9" />
+                <!-- Main Magenta Paint Splash -->
+                <path filter="url(#paintEdgeGrungeR)" d="M 200,90 
+                         C 120,130 65,190 25,255 
+                         C -15,310 40,350 25,405 
+                         C 10,460 75,505 130,535 
+                         C 170,555 310,555 560,555 
+                         L 560,90 Z" fill="url(#magentaPaintGrad)" />
+                <!-- Yellow paint streak on bottom -->
+                <path filter="url(#paintEdgeGrungeR)" d="M 70,450 C 130,480 190,460 250,510 C 300,540 390,530 450,550 L 110,550 Z" fill="#ffee00" opacity="0.95" />
+                <!-- Flying droplets & specks -->
+                <g class="paint-droplets-right">
+                    <circle cx="80" cy="190" r="7" fill="#00d2ff" />
+                    <circle cx="50" cy="150" r="5" fill="#00d2ff" />
+                    <circle cx="18" cy="235" r="6" fill="#ff007f" />
+                    <circle cx="10" cy="285" r="8" fill="#ff007f" />
+                    <circle cx="20" cy="360" r="6" fill="#ff007f" />
+                    <circle cx="45" cy="435" r="7" fill="#ffee00" />
+                    <circle cx="18" cy="485" r="5" fill="#ffee00" />
+                </g>
+            </svg>
+        </div>
+
+        <!-- Progress Line at base of hero -->
+        <div class="video-progress-line">
+            <div class="video-progress-fill" id="heroProgressFill"></div>
+        </div>
+
+        <!-- Overlaid Content -->
+        <div class="hero-content-wrap">
+            <!-- Left Headline Box (Over yellow paint splash) -->
+            <div class="hero-headline-block">
+                <span class="hero-title-dance">Dance</span>
+                <span class="hero-title-sweat">Sweat</span>
+                <div class="hero-title-smile-wrap">
+                    <span class="hero-title-smile">Smile</span>
+                    <span class="hero-heart-doodle">&hearts;</span>
+                </div>
+                <div class="hero-author-script">with Michelle</div>
+                <p class="hero-desc">Fun, high-energy dance fitness classes for all levels. Let's move, sweat and smile!</p>
+                <a href="#classes" class="hero-book-btn">Book Your Class &rsaquo;</a>
+            </div>
+
+            <!-- Right "Good Vibes Only ♡" Badge (Over magenta/cyan splash) -->
+            <div class="hero-right-badge">
+                <div class="good-vibes-text">
+                    Good<br>
+                    Vibes<br>
+                    Only
+                    <span class="vibes-heart-doodle">&hearts;</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Video Player Controls -->
+        <div class="hero-video-controls">
+            <button class="hero-ctrl-btn" onclick="prevHeroVideo()" title="Previous Video">&lsaquo;</button>
+            <span class="hero-track-name" id="heroTrackName">Routine 1 of 9</span>
+            <button class="hero-ctrl-btn" onclick="nextHeroVideo()" title="Next Video">&rsaquo;</button>
+            <button class="hero-ctrl-btn" id="heroSoundBtn" onclick="toggleHeroSound()" title="Unmute Music">🔊</button>
+            <button class="hero-ctrl-btn" id="heroFitBtn" onclick="toggleVideoFit()" title="Toggle Framing (9:16 Full Body / Wide Stage)">↔</button>
+        </div>
+    </section>
+
+    <!-- -------------------------------------------------------------
+         SECTION 2: "WATCH ME MOVE" VIDEO CARDS
+    ------------------------------------------------------------- -->
+    <section class="watch-me-section" id="videos">
+        <div class="watch-me-header">
+            <div class="watch-me-title-wrap">
+                <h2>Watch Me Move</h2>
+                <p>Get a feel for the energy, the music and the fun! Watch some of my latest Zumba sessions.</p>
+            </div>
+            <a href="#videos" class="view-more-btn" onclick="alert('Showing all 9 energetic routine videos!')">View More Videos &gt;</a>
+        </div>
+
+        <div class="watch-grid">
+            <!-- Card 1 -->
+            <div class="watch-card" onclick="openHeroModal('videos/zumba_dance.mp4')">
+                <div class="watch-thumbnail-box">
+                    <video muted loop playsinline src="videos/zumba_dance.mp4" onmouseover="this.play()" onmouseout="this.pause()"></video>
+                    <div class="watch-play-btn"></div>
+                    <div class="watch-duration-badge">3:45</div>
+                </div>
+                <div class="watch-card-info">
+                    <h3>Zumba Dance Party</h3>
+                    <p>Feel the Energy!</p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="watch-card" onclick="openHeroModal('videos/zumba_dance_2.mp4')">
+                <div class="watch-thumbnail-box">
+                    <video muted loop playsinline src="videos/zumba_dance_2.mp4" onmouseover="this.play()" onmouseout="this.pause()"></video>
+                    <div class="watch-play-btn"></div>
+                    <div class="watch-duration-badge">4:12</div>
+                </div>
+                <div class="watch-card-info">
+                    <h3>Latin Vibes</h3>
+                    <p>Salsa &bull; Merengue &bull; Reggaeton</p>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="watch-card" onclick="openHeroModal('videos/zumba_dance_3.mp4')">
+                <div class="watch-thumbnail-box">
+                    <video muted loop playsinline src="videos/zumba_dance_3.mp4" onmouseover="this.play()" onmouseout="this.pause()"></video>
+                    <div class="watch-play-btn"></div>
+                    <div class="watch-duration-badge">3:28</div>
+                </div>
+                <div class="watch-card-info">
+                    <h3>Full Body Blast</h3>
+                    <p>Sweat &bull; Smile &bull; Repeat</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- -------------------------------------------------------------
+         SECTION 3: "MY CLASSES" YELLOW BRUSH BANNER + 5 DANCER CIRCLES
+    ------------------------------------------------------------- -->
+    <section class="classes-banner-section" id="classes">
+        <div class="classes-content-wrap">
+            <h2 class="classes-title">My Classes</h2>
+            <div class="classes-subtitle">Different classes, same great vibes!</div>
+
+            <div class="classes-circles-row">
+                <!-- Circle 1: Zumba Classic (Pink) -->
+                <div class="class-item" onclick="switchHeroVideo('videos/zumba_dance.mp4', 'Zumba Classic')">
+                    <div class="class-circle pink">
+                        <svg class="class-dancer-svg" viewBox="0 0 100 120">
+                            <circle cx="50" cy="18" r="10"/>
+                            <path d="M50,28 C58,28 68,36 70,48 C72,60 65,72 62,82 C58,92 58,106 56,114 L46,114 C48,106 50,94 44,84 C38,74 32,62 34,48 C36,36 42,28 50,28 Z"/>
+                            <path d="M34,48 C22,44 10,40 5,42 C3,44 4,48 7,49 C18,52 26,56 34,60 Z"/>
+                            <path d="M70,48 C78,42 88,32 86,22 C85,19 80,21 81,25 C82,34 76,44 68,52 Z"/>
+                        </svg>
+                    </div>
+                    <div class="class-name">Zumba&reg;</div>
+                    <div class="class-desc">Latin-inspired fitness party!</div>
+                </div>
+
+                <!-- Circle 2: Zumba Gold (Cyan) -->
+                <div class="class-item" onclick="switchHeroVideo('videos/zumba_dance_6.mp4', 'Zumba Gold')">
+                    <div class="class-circle cyan">
+                        <svg class="class-dancer-svg" viewBox="0 0 100 120">
+                            <circle cx="50" cy="18" r="10"/>
+                            <path d="M50,28 C62,30 70,42 72,56 C74,70 66,82 62,94 C58,104 56,112 55,116 L45,116 C46,110 48,100 42,92 C36,82 28,70 30,56 C32,42 40,30 50,28 Z"/>
+                            <path d="M72,56 C80,48 86,36 84,24 C82,20 78,22 79,26 C80,35 75,44 68,52 Z"/>
+                            <path d="M30,56 C24,48 18,36 20,24 C22,20 26,22 25,26 C24,35 27,44 34,52 Z"/>
+                        </svg>
+                    </div>
+                    <div class="class-name">Zumba Gold&reg;</div>
+                    <div class="class-desc">Low impact, high energy</div>
+                </div>
+
+                <!-- Circle 3: Zumba Toning (Orange) -->
+                <div class="class-item" onclick="switchHeroVideo('videos/zumba_dance_3.mp4', 'Zumba Toning')">
+                    <div class="class-circle orange">
+                        <svg class="class-dancer-svg" viewBox="0 0 100 120">
+                            <circle cx="50" cy="16" r="10"/>
+                            <path d="M50,26 C58,26 66,34 68,48 C70,60 62,72 58,82 C54,90 62,102 68,110 L58,112 C52,104 46,94 42,84 C38,76 30,64 32,50 C34,36 42,26 50,26 Z"/>
+                            <path d="M68,48 C78,38 88,24 92,10 C93,6 88,6 87,11 C83,22 75,34 66,42 Z"/>
+                            <path d="M32,50 C24,40 16,25 10,12 C9,8 5,9 6,13 C9,24 18,36 28,45 Z"/>
+                        </svg>
+                    </div>
+                    <div class="class-name">Zumba Toning&reg;</div>
+                    <div class="class-desc">Dance + light weights for extra burn</div>
+                </div>
+
+                <!-- Circle 4: Zumba Step (Purple) -->
+                <div class="class-item" onclick="switchHeroVideo('videos/zumba_dance_5.mp4', 'Zumba Step')">
+                    <div class="class-circle purple">
+                        <svg class="class-dancer-svg" viewBox="0 0 100 120">
+                            <circle cx="50" cy="18" r="10"/>
+                            <path d="M50,28 C60,28 68,38 69,52 C70,66 64,78 60,88 C56,98 56,110 54,115 L44,115 C46,108 48,98 42,88 C36,78 30,66 32,52 C34,38 42,28 50,28 Z"/>
+                            <path d="M69,52 C78,48 88,40 85,30 C82,24 76,28 78,34 C80,40 74,46 66,50 Z"/>
+                            <path d="M32,52 C24,46 16,38 18,28 C20,22 26,24 25,30 C24,38 28,46 34,50 Z"/>
+                        </svg>
+                    </div>
+                    <div class="class-name">Zumba Step&reg;</div>
+                    <div class="class-desc">Step, dance, get fit!</div>
+                </div>
+
+                <!-- Circle 5: Zumba Kids (Green) -->
+                <div class="class-item" onclick="switchHeroVideo('videos/zumba_dance_8.mp4', 'Zumba Kids')">
+                    <div class="class-circle green">
+                        <svg class="class-dancer-svg" viewBox="0 0 100 120">
+                            <circle cx="50" cy="18" r="10"/>
+                            <path d="M50,28 C58,28 68,36 70,48 C72,60 65,72 62,82 C58,92 58,106 56,114 L46,114 C48,106 50,94 44,84 C38,74 32,62 34,48 C36,36 42,28 50,28 Z"/>
+                            <path d="M34,48 C22,44 10,40 5,42 C3,44 4,48 7,49 C18,52 26,56 34,60 Z"/>
+                            <path d="M70,48 C78,42 88,32 86,22 C85,19 80,21 81,25 C82,34 76,44 68,52 Z"/>
+                            <path d="M46,92 C38,98 25,108 20,114 L28,116 C34,110 42,102 48,96 Z"/>
+                        </svg>
+                    </div>
+                    <div class="class-name">Zumba Kids&reg;</div>
+                    <div class="class-desc">Little dancers, big energy!</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- -------------------------------------------------------------
+         SECTION 4: "ABOUT ME" (Photo badge + Details + 4 Icons)
+    ------------------------------------------------------------- -->
+    <section class="about-section" id="about">
+        <div class="about-graphic-card">
+            <video class="about-card-video" autoplay muted loop playsinline src="videos/zumba_dance_4.mp4"></video>
+            <div class="about-overlay-text">
+                <div class="move-dance-text">
+                    Move<br>
+                    Dance<br>
+                    Be Happy &hearts;
+                </div>
+            </div>
+        </div>
+
+        <div class="about-info-col">
+            <h2>About Me</h2>
+            <p>I'm a passionate Zumba instructor, and I believe fitness should be fun! My classes are all about great music, positive energy, and a supportive community. Whether you're a beginner or a seasoned dancer, you'll feel welcome, motivated, and ready to move!</p>
+
+            <div class="about-features-grid">
+                <div class="feat-item">
+                    <div class="feat-icon-badge">&hearts;</div>
+                    <div class="feat-text">Fun &amp; friendly atmosphere</div>
+                </div>
+                <div class="feat-item">
+                    <div class="feat-icon-badge">&#9835;</div>
+                    <div class="feat-text">Great music (you'll love it!)</div>
+                </div>
+                <div class="feat-item">
+                    <div class="feat-icon-badge">&#128101;</div>
+                    <div class="feat-text">All fitness levels welcome</div>
+                </div>
+                <div class="feat-item">
+                    <div class="feat-icon-badge">&#9786;</div>
+                    <div class="feat-text">Feel fitter, stronger &amp; happier</div>
+                </div>
+            </div>
+
+            <a href="#contact" class="story-btn">My Story &rarr;</a>
+        </div>
+    </section>
+
+    <!-- -------------------------------------------------------------
+         SECTION 5: "WHAT MY DANCERS SAY" TESTIMONIALS (Pink Banner)
+    ------------------------------------------------------------- -->
+    <section class="testimonials-banner" id="testimonials">
+        <div class="testimonials-wrap">
+            <div class="testi-header-col">
+                <h2>What My<br>Dancers Say</h2>
+            </div>
+
+            <div class="testi-cards-row">
+                <!-- Testimonial 1 -->
+                <div class="testi-card">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80" alt="Sarah" class="testi-avatar">
+                    <div class="testi-text-box">
+                        <p>"Zumba with you is the highlight of my week! So much fun and such positive energy!"</p>
+                        <div class="testi-author">&ndash; Sarah</div>
+                        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testi-card">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80" alt="Emma" class="testi-avatar">
+                    <div class="testi-text-box">
+                        <p>"I've never felt so fit and happy. The classes are addictive!"</p>
+                        <div class="testi-author">&ndash; Emma</div>
+                        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testi-card">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80" alt="Priya" class="testi-avatar">
+                    <div class="testi-text-box">
+                        <p>"Amazing instructor, great music and a fantastic atmosphere. Highly recommend!"</p>
+                        <div class="testi-author">&ndash; Priya</div>
+                        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- -------------------------------------------------------------
+         SECTION 6: "READY TO DANCE?" BOTTOM CTA BAR
+    ------------------------------------------------------------- -->
+    <div class="ready-bar" id="contact">
+        <div class="ready-left-group">
+            <svg class="ready-dancer-icon" viewBox="0 0 100 120">
+                <circle cx="50" cy="18" r="12"/>
+                <path d="M50,30 C60,30 75,38 78,55 C80,68 70,82 66,90 C62,98 62,112 60,118 L48,118 C50,110 52,96 46,90 C40,84 32,70 34,55 C36,38 42,30 50,30 Z"/>
+                <path d="M34,55 C25,48 15,35 12,22 C10,18 6,20 8,26 C12,42 22,58 34,65 Z"/>
+                <path d="M78,55 C88,62 94,75 96,88 C97,92 101,90 99,85 C96,70 88,52 78,45 Z"/>
+            </svg>
+            <div class="ready-text-group">
+                <h3>Ready to Dance?</h3>
+                <p>Join my next class and let's get moving!</p>
+            </div>
+        </div>
+
+        <a href="#contact" class="ready-btn" onclick="alert('Booking system opening soon! Get ready to dance!')">Book a Class &rarr;</a>
+
+        <div class="ready-doodle">
+            Zumba<br>Changes<br>Lives &hearts;
+        </div>
+    </div>
+
+    <!-- -------------------------------------------------------------
+         FOOTER
+    ------------------------------------------------------------- -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="logo-group">
+                <svg class="logo-icon" viewBox="0 0 100 120">
+                    <circle cx="50" cy="18" r="12"/>
+                    <path d="M50,30 C60,30 75,38 78,55 C80,68 70,82 66,90 C62,98 62,112 60,118 L48,118 C50,110 52,96 46,90 C40,84 32,70 34,55 C36,38 42,30 50,30 Z"/>
+                    <path d="M34,55 C25,48 15,35 12,22 C10,18 6,20 8,26 C12,42 22,58 34,65 Z"/>
+                    <path d="M78,55 C88,62 94,75 96,88 C97,92 101,90 99,85 C96,70 88,52 78,45 Z"/>
+                </svg>
+                <div>
+                    <span class="logo-text">Zumba</span>
+                    <span class="logo-sub">WITH ME</span>
+                </div>
+            </div>
+
+            <div class="footer-socials">
+                <a href="https://facebook.com" class="footer-social-link" title="Facebook">&#9829;</a>
+                <a href="https://instagram.com" class="footer-social-link" title="Instagram">&#9733;</a>
+                <a href="https://youtube.com" class="footer-social-link" title="YouTube">&#9658;</a>
+            </div>
+
+            <div class="footer-nav">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#classes">Classes</a>
+                <a href="#videos">Videos</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <div class="footer-doodle">Dare to Dance &hearts;</div>
+        </div>
+        <div class="footer-copy">&copy; 2026 Zumba With Me. All rights reserved.</div>
+    </footer>
+
+    <!-- TEMPLATE SWITCHER (Toggle between Template 1 and Template 2) -->
+    <a href="index.html" class="template-switch-pill" title="View Template 1 (Cyber Neon Dark Mode)">
+        <span>&larr;</span> Template 1 (Neon Dark)
+    </a>
+
+    <!-- MODAL VIDEO PLAYER -->
+    <div class="modal-overlay" id="heroModal" onclick="closeHeroModal(event)">
+        <div class="modal-inner" onclick="event.stopPropagation()">
+            <div class="modal-close" onclick="closeHeroModal()">&times;</div>
+            <video id="modalVidPlayer" controls autoplay playsinline></video>
+        </div>
+    </div>
+
+    <!-- PLAYLIST ENGINE SCRIPT -->
+    <script>
+        const playlist = [
+            { src: 'videos/zumba_dance.mp4', title: 'Latin Groove Blast' },
+            { src: 'videos/zumba_dance_2.mp4', title: 'High Tempo Cardio Party' },
+            { src: 'videos/zumba_dance_3.mp4', title: 'Rhythm & Sweat Intensive' },
+            { src: 'videos/zumba_dance_4.mp4', title: 'Afro-Latin Fusion' },
+            { src: 'videos/zumba_dance_5.mp4', title: 'Live Class Energy' },
+            { src: 'videos/zumba_dance_6.mp4', title: 'Salsa & Merengue Pop' },
+            { src: 'videos/zumba_dance_7.mp4', title: 'Reggaeton Power Hype' },
+            { src: 'videos/zumba_dance_8.mp4', title: 'Festival Energy Extravaganza' },
+            { src: 'videos/zumba_dance_9.mp4', title: 'Synchronized Groove' }
+        ];
+
+        let currentIdx = 0;
+        let activeVidBuffer = 1;
+        let isMuted = true;
+        let isTransitioning = false;
+
+        const v1 = document.getElementById('heroVid1');
+        const v2 = document.getElementById('heroVid2');
+        const progressFill = document.getElementById('heroProgressFill');
+        const trackLabel = document.getElementById('heroTrackName');
+        const soundBtn = document.getElementById('heroSoundBtn');
+
+        function getActiveVid() {
+            return activeVidBuffer === 1 ? v1 : v2;
+        }
+
+        function getInactiveVid() {
+            return activeVidBuffer === 1 ? v2 : v1;
+        }
+
+        function initHeroPlaylist() {
+            [v1, v2].forEach(v => {
+                v.addEventListener('timeupdate', handleTimeUpdate);
+                v.addEventListener('ended', handleVideoEnded);
+            });
+            updateTrackLabel();
+        }
+
+        function handleTimeUpdate(e) {
+            const current = getActiveVid();
+            if (e.target === current && current.duration && current.duration > 0) {
+                const pct = (current.currentTime / current.duration) * 100;
+                if (progressFill) progressFill.style.width = pct + '%';
+
+                // Automatically advance 0.4s before end
+                if (current.duration - current.currentTime <= 0.4 && !isTransitioning) {
+                    isTransitioning = true;
+                    nextHeroVideo();
+                }
+            }
+        }
+
+        function handleVideoEnded() {
+            if (!isTransitioning) {
+                isTransitioning = true;
+                nextHeroVideo();
+            }
+        }
+
+        function updateTrackLabel() {
+            if (trackLabel) {
+                trackLabel.textContent = `${currentIdx + 1}/${playlist.length}: ${playlist[currentIdx].title}`;
+            }
+        }
+
+        function playHeroVideoAt(idx) {
+            if (idx < 0) idx = playlist.length - 1;
+            if (idx >= playlist.length) idx = 0;
+            currentIdx = idx;
+
+            const outgoing = getActiveVid();
+            const incoming = getInactiveVid();
+
+            incoming.src = playlist[currentIdx].src;
+            incoming.muted = isMuted;
+            incoming.currentTime = 0;
+
+            const p = incoming.play();
+            if (p !== undefined) {
+                p.then(() => {
+                    incoming.classList.add('active');
+                    outgoing.classList.remove('active');
+                    activeVidBuffer = activeVidBuffer === 1 ? 2 : 1;
+                    setTimeout(() => {
+                        outgoing.pause();
+                        isTransitioning = false;
+                    }, 1000);
+                    updateTrackLabel();
+                }).catch(() => {
+                    incoming.classList.add('active');
+                    outgoing.classList.remove('active');
+                    activeVidBuffer = activeVidBuffer === 1 ? 2 : 1;
+                    isTransitioning = false;
+                    updateTrackLabel();
+                });
+            }
+        }
+
+        function nextHeroVideo() {
+            playHeroVideoAt(currentIdx + 1);
+        }
+
+        function prevHeroVideo() {
+            playHeroVideoAt(currentIdx - 1);
+        }
+
+        function switchHeroVideo(src, title) {
+            const idx = playlist.findIndex(p => p.src === src);
+            if (idx !== -1) {
+                playHeroVideoAt(idx);
+            }
+            document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function toggleHeroSound() {
+            isMuted = !isMuted;
+            v1.muted = isMuted;
+            v2.muted = isMuted;
+            if (soundBtn) {
+                soundBtn.textContent = isMuted ? '🔇' : '🔊';
+            }
+        }
+
+        function toggleVideoFit() {
+            const bg = document.querySelector('.hero-video-bg');
+            const btn = document.getElementById('heroFitBtn');
+            if (bg.classList.contains('wide-stage')) {
+                bg.classList.remove('wide-stage');
+                if (btn) btn.title = 'Switch to Wide Stage';
+            } else {
+                bg.classList.add('wide-stage');
+                if (btn) btn.title = 'Switch to Full 9:16 Natural Frame';
+            }
+        }
+
+        function openHeroModal(src) {
+            const modal = document.getElementById('heroModal');
+            const player = document.getElementById('modalVidPlayer');
+            player.src = src;
+            modal.style.display = 'flex';
+            player.play();
+        }
+
+        function closeHeroModal() {
+            const modal = document.getElementById('heroModal');
+            const player = document.getElementById('modalVidPlayer');
+            player.pause();
+            player.src = '';
+            modal.style.display = 'none';
+        }
+
+        window.addEventListener('DOMContentLoaded', initHeroPlaylist);
+    </script>
+</body>
+</html>

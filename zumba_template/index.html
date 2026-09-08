@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dance with Michelle - Zumba Fitness</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:ital,wght@0,400;0,700;0,900;1,900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-pink: #ff007f;
+            --neon-pink-bright: #ff1493;
+            --neon-yellow: #ffee00;
+            --neon-green: #25ff45;
+            --neon-cyan: #00e5ff;
+            --nav-navy: #080b2b;
+            --text-white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #080b2b;
+            color: var(--text-white);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* -------------------------------------------------------------
+           CRISP, VIBRANT FLUID VECTOR BACKGROUND (Exact match to image)
+           Vivid electric curves matching the laptop wallpaper with NO blur
+        ------------------------------------------------------------- */
+        .page-fluid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+            background: #080b2b;
+        }
+
+        .bg-svg-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* -------------------------------------------------------------
+           TOP NAVIGATION BAR (Deep Navy Bar with Glowing Dancer Icons)
+        ------------------------------------------------------------- */
+        header.top-navbar {
+            background-color: var(--nav-navy);
+            padding: 16px 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 500;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .nav-links-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.45rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.2s, text-shadow 0.2s;
+        }
+
+        .nav-btn:hover {
+            color: var(--neon-yellow);
+            text-shadow: 0 0 12px var(--neon-yellow);
+        }
+
+        /* Glowing Dancer Silhouette Icons in Navbar */
+        .nav-dancer {
+            width: 42px;
+            height: 50px;
+            cursor: pointer;
+            transform-origin: bottom center;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .nav-dancer.cyan {
+            fill: var(--neon-cyan);
+            filter: drop-shadow(0 0 8px var(--neon-cyan)) drop-shadow(0 0 16px var(--neon-cyan));
+        }
+
+        .nav-dancer.pink {
+            fill: var(--neon-pink);
+            filter: drop-shadow(0 0 8px var(--neon-pink)) drop-shadow(0 0 16px var(--neon-pink));
+        }
+
+        .nav-dancer.yellow {
+            fill: var(--neon-yellow);
+            filter: drop-shadow(0 0 8px var(--neon-yellow)) drop-shadow(0 0 16px var(--neon-yellow));
+        }
+
+        .nav-dancer:hover {
+            animation: navBounce 0.45s ease-in-out infinite alternate;
+        }
+
+        @keyframes navBounce {
+            0% { transform: translateY(0) rotate(-14deg) scale(1.2); }
+            50% { transform: translateY(-8px) rotate(0deg) scale(1.3) scaleX(0.9); }
+            100% { transform: translateY(0) rotate(14deg) scale(1.2); }
+        }
+
+        /* Audio Unmute Toggle */
+        .audio-toggle-pill {
+            position: absolute;
+            right: 30px;
+            background: rgba(255, 0, 127, 0.25);
+            border: 2px solid var(--neon-pink);
+            color: #ffffff;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
+            transition: all 0.25s;
+        }
+
+        .audio-toggle-pill:hover {
+            background: var(--neon-pink);
+            color: #000;
+            box-shadow: 0 0 25px var(--neon-pink);
+        }
+
+        /* -------------------------------------------------------------
+           MAIN HERO: Central Video Stage with Overlapping Neon Script
+        ------------------------------------------------------------- */
+        .main-hero-layout {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 20px;
+            width: 100%;
+            max-width: 1350px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Video Stage Wrapper where Neon Text OVERLAPS on top and bottom */
+        .video-stage-overlap-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 1220px;
+            margin: 45px 0 50px 0; /* Space for the overlapping text */
+        }
+
+        /* Top Overlapping Neon Script */
+        .overlap-neon-title-top {
+            position: absolute;
+            top: -46px; /* Exactly overlaps the top edge of the video box */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 30;
+            pointer-events: none;
+            width: 100%;
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(3.2rem, 6vw, 5.6rem);
+            color: #ffffff;
+            font-weight: 700;
+            line-height: 1;
+            white-space: nowrap;
+            user-select: none;
+            text-shadow: 
+                0 0 6px #ffffff,
+                0 0 14px var(--neon-pink),
+                0 0 28px var(--neon-pink),
+                0 0 50px var(--neon-pink),
+                0 0 85px var(--neon-pink-bright),
+                0 0 120px var(--neon-pink);
+            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.8));
+            animation: pulseGlow 2.5s ease-in-out infinite alternate;
+        }
+
+        /* Bottom Overlapping Neon Script */
+        .overlap-neon-title-bottom {
+            position: absolute;
+            bottom: -46px; /* Exactly overlaps the bottom edge of the video box */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 30;
+            pointer-events: none;
+            width: 100%;
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(3.2rem, 6vw, 5.6rem);
+            color: #ffffff;
+            font-weight: 700;
+            line-height: 1;
+            white-space: nowrap;
+            user-select: none;
+            text-shadow: 
+                0 0 6px #ffffff,
+                0 0 14px var(--neon-pink),
+                0 0 28px var(--neon-pink),
+                0 0 50px var(--neon-pink),
+                0 0 85px var(--neon-pink-bright),
+                0 0 120px var(--neon-pink);
+            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.8));
+            animation: pulseGlow 2.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                text-shadow: 
+                    0 0 4px #ffffff,
+                    0 0 12px var(--neon-pink),
+                    0 0 24px var(--neon-pink),
+                    0 0 45px var(--neon-pink),
+                    0 0 75px var(--neon-pink);
+                transform: translateX(-50%) scale(0.995);
+            }
+            100% {
+                text-shadow: 
+                    0 0 8px #ffffff,
+                    0 0 18px var(--neon-pink),
+                    0 0 35px var(--neon-pink),
+                    0 0 65px var(--neon-pink),
+                    0 0 100px var(--neon-pink),
+                    0 0 135px var(--neon-pink);
+                transform: translateX(-50%) scale(1.01);
+            }
+        }
+
+        /* -------------------------------------------------------------
+           5-PANEL MULTI-REEL STAGE (Full-Body Instagram Video Realignment)
+           Because Instagram reels are 9:16 vertical, dividing the wide stage into 5 vertical
+           strips lets you see the FULL BODY of each dancer (head to toe) without waist cropping!
+        ------------------------------------------------------------- */
+        .crisp-video-box {
+            position: relative;
+            width: 100%;
+            height: clamp(360px, 48vh, 520px);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.9),
+                0 0 35px rgba(255, 0, 127, 0.45);
+            background: #000;
+        }
+
+        .multi-panel-strip-stage {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Individual Vertical Reel Strip (Natural 9:16 vertical proportion) */
+        .reel-panel-slice {
+            flex: 1;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            border-right: 2px solid rgba(255, 255, 255, 0.35);
+            cursor: pointer;
+            transition: flex 0.4s cubic-bezier(0.25, 1, 0.5, 1), filter 0.3s;
+            background: #000;
+        }
+
+        .reel-panel-slice:last-child {
+            border-right: none;
+        }
+
+        .reel-panel-slice:hover {
+            flex: 1.45;
+            filter: brightness(1.15);
+        }
+
+        /* Full-body vertical video alignment: head to toe in view, ZERO BLUR */
+        .reel-panel-slice video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Focuses on the top & full body so heads and arms are completely visible! */
+            object-position: center 12%;
+            display: block;
+            filter: none;
+        }
+
+        /* Center Panel Highlight overlay */
+        .reel-panel-slice.center-featured {
+            box-shadow: inset 0 0 30px rgba(255, 0, 127, 0.35);
+        }
+
+        /* Center Pulsing Play Button matching the reference */
+        .center-play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 82px;
+            height: 82px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #2d004b 20%, #150024 100%);
+            border: 4px solid #ffffff;
+            box-shadow: 
+                0 0 0 6px var(--neon-pink),
+                0 0 30px var(--neon-pink),
+                0 0 55px var(--neon-pink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 25;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
+            animation: pulsePlayBtn 1.8s infinite;
+        }
+
+        .center-play-button::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-left: 24px solid #ffffff;
+            margin-left: 5px;
+        }
+
+        .center-play-button:hover {
+            transform: translate(-50%, -50%) scale(1.18);
+            box-shadow: 
+                0 0 0 8px var(--neon-yellow),
+                0 0 45px var(--neon-yellow),
+                0 0 85px var(--neon-pink);
+        }
+
+        @keyframes pulsePlayBtn {
+            0% { box-shadow: 0 0 0 4px var(--neon-pink), 0 0 20px var(--neon-pink); }
+            50% { box-shadow: 0 0 0 8px var(--neon-pink), 0 0 40px var(--neon-pink), 0 0 65px var(--neon-yellow); }
+            100% { box-shadow: 0 0 0 4px var(--neon-pink), 0 0 20px var(--neon-pink); }
+        }
+
+        /* Prev & Next Stage Skip Arrows */
+        .stage-skip-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.65);
+            border: 2px solid var(--neon-pink);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 25;
+            font-size: 1.4rem;
+            transition: all 0.2s;
+            backdrop-filter: blur(4px);
+        }
+
+        .stage-skip-arrow.prev { left: 16px; }
+        .stage-skip-arrow.next { right: 16px; }
+
+        .stage-skip-arrow:hover {
+            background: var(--neon-pink);
+            color: #000;
+            border-color: var(--neon-yellow);
+            box-shadow: 0 0 15px var(--neon-pink);
+        }
+
+        /* Video Progress Line at Bottom of Video Box */
+        .box-progress-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.25);
+            z-index: 25;
+        }
+
+        .box-progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-green), var(--neon-yellow), var(--neon-pink));
+            box-shadow: 0 0 10px var(--neon-pink);
+            transition: width 0.1s linear;
+        }
+
+        /* -------------------------------------------------------------
+           THE 4 ACTION CIRCLES (Exact 1:1 match to reference image)
+        ------------------------------------------------------------- */
+        .four-circles-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: clamp(16px, 3.5vw, 42px);
+            margin: 15px auto 25px auto;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            z-index: 20;
+        }
+
+        .action-circle {
+            width: clamp(140px, 16.5vw, 205px);
+            height: clamp(140px, 16.5vw, 205px);
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.35s;
+            overflow: visible;
+        }
+
+        /* 1. Cyan Circle with Magenta Border */
+        .action-circle.c-cyan {
+            background-color: var(--neon-cyan);
+            border: 8px solid var(--neon-pink);
+            box-shadow: 0 8px 30px rgba(0, 229, 255, 0.6), 0 0 25px var(--neon-pink);
+        }
+
+        /* 2. Lime Green Circle with Magenta Border */
+        .action-circle.c-lime {
+            background-color: var(--neon-green);
+            border: 8px solid var(--neon-pink);
+            box-shadow: 0 8px 30px rgba(37, 255, 69, 0.6), 0 0 25px var(--neon-pink);
+        }
+
+        /* 3. Hot Magenta Circle with Yellow Border & RADIATING SUNBURST (Active in image) */
+        .action-circle.c-magenta {
+            background-color: var(--neon-pink);
+            border: 8px solid var(--neon-yellow);
+            box-shadow: 0 8px 35px rgba(255, 0, 127, 0.8), 0 0 40px var(--neon-yellow);
+        }
+
+        /* 4. Yellow Circle with Magenta Border */
+        .action-circle.c-yellow {
+            background-color: var(--neon-yellow);
+            border: 8px solid var(--neon-pink);
+            box-shadow: 0 8px 30px rgba(255, 238, 0, 0.6), 0 0 25px var(--neon-pink);
+        }
+
+        /* Dancer Silhouette SVGs inside circles */
+        .circle-silhouette {
+            width: 70%;
+            height: 70%;
+            fill: #000000;
+            z-index: 3;
+            transform-origin: bottom center;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.4));
+        }
+
+        /* Mini Purple Play Badge at 4 o'clock */
+        .play-badge-corner {
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #2a004f;
+            border: 3px solid #00f0ff;
+            box-shadow: 0 0 15px #00f0ff, 0 0 10px #ff007f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+            transition: transform 0.3s;
+        }
+
+        .play-badge-corner::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid transparent;
+            border-left: 12px solid #ffffff;
+            margin-left: 3px;
+        }
+
+        /* Radiating Starburst / Sunburst Rays (shown in reference image circle 3) */
+        .sunburst-star-rays {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 175%;
+            height: 175%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.35s ease-out;
+        }
+
+        .action-circle.c-magenta .sunburst-star-rays,
+        .action-circle:hover .sunburst-star-rays {
+            opacity: 1;
+            animation: spinSunburst 9s linear infinite;
+        }
+
+        @keyframes spinSunburst {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Hover dancing animations on all circles */
+        .action-circle:hover {
+            transform: scale(1.1) translateY(-6px);
+        }
+
+        .action-circle:hover .circle-silhouette {
+            animation: silhouetteDanceMove 0.6s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
+        }
+
+        .action-circle:hover .play-badge-corner {
+            transform: scale(1.25) rotate(15deg);
+            border-color: var(--neon-yellow);
+            box-shadow: 0 0 20px var(--neon-yellow);
+        }
+
+        @keyframes silhouetteDanceMove {
+            0% { transform: rotate(-10deg) scale(1.05) translateY(0); }
+            50% { transform: rotate(0deg) scale(1.15) scaleY(1.08) translateY(-10px); }
+            100% { transform: rotate(12deg) scale(1.05) translateY(0); }
+        }
+
+        /* Floating HUD Indicator */
+        .now-playing-pill {
+            position: fixed;
+            bottom: 25px;
+            left: 30px;
+            z-index: 100;
+            background: rgba(8, 11, 43, 0.92);
+            border: 2px solid var(--neon-cyan);
+            border-radius: 40px;
+            padding: 10px 22px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 229, 255, 0.4);
+            transition: transform 0.3s;
+        }
+
+        .now-playing-pill:hover {
+            transform: scale(1.04);
+            box-shadow: 0 8px 35px rgba(0, 0, 0, 0.9), 0 0 30px var(--neon-cyan);
+        }
+
+        .eq-bars {
+            display: flex;
+            align-items: flex-end;
+            gap: 3px;
+            height: 18px;
+        }
+
+        .eq-bar {
+            width: 4px;
+            background: var(--neon-green);
+            border-radius: 2px;
+            animation: eqBounce 0.8s ease-in-out infinite alternate;
+        }
+        .eq-bar:nth-child(1) { height: 60%; animation-delay: 0.1s; }
+        .eq-bar:nth-child(2) { height: 100%; animation-delay: 0.3s; }
+        .eq-bar:nth-child(3) { height: 40%; animation-delay: 0.2s; }
+        .eq-bar:nth-child(4) { height: 80%; animation-delay: 0.4s; }
+
+        @keyframes eqBounce {
+            0% { height: 30%; }
+            100% { height: 100%; }
+        }
+
+        .hud-info-meta {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hud-tag {
+            font-size: 0.65rem;
+            color: var(--neon-yellow);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 800;
+        }
+
+        .hud-title {
+            font-size: 0.95rem;
+            font-weight: 900;
+            color: #ffffff;
+            max-width: 220px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* -------------------------------------------------------------
+           NATIVE 9:16 VERTICAL THEATER MODAL (Full-Height Reel)
+        ------------------------------------------------------------- */
+        .modal-theater {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(14px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-theater-box {
+            position: relative;
+            width: 90%;
+            max-width: 460px; /* Perfect 9:16 vertical Instagram ratio */
+            max-height: 88vh;
+            background: #000;
+            border-radius: 24px;
+            border: 4px solid var(--neon-pink);
+            box-shadow: 0 0 60px var(--neon-pink);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-theater-box video {
+            width: 100%;
+            height: 100%;
+            max-height: 86vh;
+            display: block;
+            object-fit: contain; /* Shows 100% of the vertical video from head to toe! */
+        }
+
+        .modal-close-cross {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 2.2rem;
+            color: white;
+            background: rgba(0,0,0,0.65);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 2px solid var(--neon-yellow);
+            z-index: 100;
+            transition: all 0.2s;
+        }
+        .modal-close-cross:hover {
+            background: var(--neon-pink);
+            color: #000;
+        }
+
+        /* Footer */
+        footer.page-foot {
+            background: var(--nav-navy);
+            padding: 20px;
+            text-align: center;
+            border-top: 2px solid var(--neon-pink);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #aaaaaa;
+        }
+        footer.page-foot span {
+            color: var(--neon-pink);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- -------------------------------------------------------------
+         VIBRANT FLUID VECTOR BACKGROUND (Exact match to reference image)
+         No blur, clean organic neon curves
+    ------------------------------------------------------------- -->
+    <div class="page-fluid-bg">
+        <svg class="bg-svg-layer" viewBox="0 0 1440 900" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Left Electric Cyan Wave -->
+            <path d="M0,0 L520,0 C420,280 320,550 560,900 L0,900 Z" fill="#00e5ff" opacity="0.95" />
+            <!-- Top Right Hot Magenta Wave -->
+            <path d="M960,0 C1100,120 1280,260 1440,320 L1440,0 Z" fill="#ff007f" opacity="0.95" />
+            <path d="M850,0 C1020,180 1200,420 1440,500 L1440,0 Z" fill="#ff1493" opacity="0.75" />
+            <!-- Bottom Left-to-Center Lime Green Wave -->
+            <path d="M220,900 C380,680 620,620 900,900 Z" fill="#25ff45" opacity="0.95" />
+            <path d="M120,900 C320,720 540,680 750,900 Z" fill="#00ff66" opacity="0.85" />
+            <!-- Bottom Right Sunny Yellow Wave -->
+            <path d="M850,900 C1000,640 1220,680 1440,750 L1440,900 Z" fill="#ffee00" opacity="0.95" />
+            <path d="M1020,900 C1150,720 1300,750 1440,820 L1440,900 Z" fill="#ffea00" opacity="0.9" />
+        </svg>
+    </div>
+
+    <!-- TOP NAVIGATION BAR (Exact match to reference image) -->
+    <header class="top-navbar">
+        <div class="nav-links-wrap">
+            <a href="#classes" class="nav-btn">CLASSES</a>
+            
+            <!-- Cyan Glowing Dancer -->
+            <svg class="nav-dancer cyan" viewBox="0 0 100 120" title="Dance!" onclick="nextPlaylistVideo()">
+                <circle cx="50" cy="18" r="12" />
+                <path d="M50,30 C60,30 75,38 78,55 C80,68 70,82 66,90 C62,98 62,112 60,118 L48,118 C50,110 52,96 46,90 C40,84 32,70 34,55 C36,38 42,30 50,30 Z" />
+                <path d="M34,55 C25,48 15,35 12,22 C10,18 6,20 8,26 C12,42 22,58 34,65 Z" />
+                <path d="M78,55 C88,62 94,75 96,88 C97,92 101,90 99,85 C96,70 88,52 78,45 Z" />
+            </svg>
+
+            <a href="#about" class="nav-btn">ABOUT</a>
+
+            <!-- Hot Pink Glowing Dancer -->
+            <svg class="nav-dancer pink" viewBox="0 0 100 120" title="Spin!" onclick="nextPlaylistVideo()">
+                <circle cx="50" cy="18" r="12" />
+                <path d="M50,30 C62,32 72,44 74,58 C76,72 68,85 64,95 C60,105 60,115 58,118 L46,118 C48,112 50,102 44,95 C38,88 30,75 32,58 C34,44 40,32 50,30 Z" />
+                <path d="M74,58 C85,45 92,30 90,15 C88,10 84,12 86,18 C88,32 80,48 70,58 Z" />
+                <path d="M32,58 C22,48 12,32 15,16 C16,12 12,10 10,15 C7,32 18,50 28,62 Z" />
+            </svg>
+
+            <a href="#videos" class="nav-btn">VIDEOS</a>
+
+            <!-- Neon Yellow Glowing Dancer -->
+            <svg class="nav-dancer yellow" viewBox="0 0 100 120" title="Jump!" onclick="nextPlaylistVideo()">
+                <circle cx="50" cy="18" r="12" />
+                <path d="M50,30 C58,30 70,38 72,52 C74,66 66,78 62,88 C58,98 64,110 70,118 L58,118 C54,110 50,100 46,90 C40,82 30,70 32,54 C34,38 42,30 50,30 Z" />
+                <path d="M72,52 C84,40 92,25 90,12 C88,8 84,10 86,16 C88,28 80,42 70,52 Z" />
+                <path d="M32,54 C20,62 10,75 8,88 C7,92 11,94 13,88 C16,76 24,64 34,56 Z" />
+            </svg>
+
+            <a href="#contact" class="nav-btn">CONTACT</a>
+        </div>
+
+        <!-- Audio Unmute Toggle -->
+        <button class="audio-toggle-pill" id="audioToggleBtn" onclick="toggleAudio()">
+            <span id="audioIcon">🔊</span> <span id="audioText">Unmute All</span>
+        </button>
+    </header>
+
+    <!-- -------------------------------------------------------------
+         MAIN HERO: Panoramic Video Box with Overlapping Neon Script
+    ------------------------------------------------------------- -->
+    <main class="main-hero-layout" id="home">
+        
+        <!-- WRAPPER: Neon script OVERLAPS the top and bottom borders of the video box -->
+        <div class="video-stage-overlap-wrapper">
+            <!-- Top Overlapping Neon Script -->
+            <div class="overlap-neon-title-top">Dance with Michelle</div>
+
+            <!-- Crisp 5-Panel Video Box (Matches image: vertical reels side-by-side show FULL BODY from head to toe!) -->
+            <div class="crisp-video-box" id="crispVideoBox">
+                
+                <!-- 5 Vertical Panel Slices matching the image: each strip has natural vertical reel proportions -->
+                <div class="multi-panel-strip-stage">
+                    <div class="reel-panel-slice" onclick="openTheater(playlist[(currentIndex + 1) % playlist.length].src)">
+                        <video id="panelVideo1" autoplay muted loop playsinline src="videos/zumba_dance_2.mp4"></video>
+                    </div>
+                    <div class="reel-panel-slice" onclick="openTheater(playlist[(currentIndex + 3) % playlist.length].src)">
+                        <video id="panelVideo2" autoplay muted loop playsinline src="videos/zumba_dance_4.mp4"></video>
+                    </div>
+                    <!-- Center Featured Routine (Primary Changing Track) -->
+                    <div class="reel-panel-slice center-featured" onclick="openTheaterCurrent()">
+                        <video id="panelVideoCenter" autoplay muted playsinline src="videos/zumba_dance.mp4"></video>
+                    </div>
+                    <div class="reel-panel-slice" onclick="openTheater(playlist[(currentIndex + 4) % playlist.length].src)">
+                        <video id="panelVideo4" autoplay muted loop playsinline src="videos/zumba_dance_5.mp4"></video>
+                    </div>
+                    <div class="reel-panel-slice" onclick="openTheater(playlist[(currentIndex + 7) % playlist.length].src)">
+                        <video id="panelVideo5" autoplay muted loop playsinline src="videos/zumba_dance_8.mp4"></video>
+                    </div>
+                </div>
+
+                <!-- Center Pulsing Play Button -->
+                <div class="center-play-button" onclick="openTheaterCurrent()" title="Play Fullscreen with Audio"></div>
+
+                <!-- Prev & Next Arrows -->
+                <button class="stage-skip-arrow prev" onclick="prevPlaylistVideo()" title="Previous Routine">&lsaquo;</button>
+                <button class="stage-skip-arrow next" onclick="nextPlaylistVideo()" title="Next Routine">&rsaquo;</button>
+
+                <!-- Progress Line at Base of Video Box -->
+                <div class="box-progress-line">
+                    <div class="box-progress-fill" id="boxProgressFill"></div>
+                </div>
+            </div>
+
+            <!-- Bottom Overlapping Neon Script -->
+            <div class="overlap-neon-title-bottom">Dance with Michelle</div>
+        </div>
+
+        <!-- -------------------------------------------------------------
+             THE 4 ACTION CIRCLES (Exact 1:1 match to reference image)
+        ------------------------------------------------------------- -->
+        <div class="four-circles-row" id="classes">
+            <!-- Circle 1: Cyan with Magenta Border (Salsa / Lateral Pose) -->
+            <div class="action-circle c-cyan" onclick="playVideoByIndex(0)" title="Play Latin Groove Blast">
+                <svg class="sunburst-star-rays" viewBox="0 0 200 200">
+                    <g fill="#00e5ff" opacity="0.6">
+                        <polygon points="100,100 95,0 105,0" />
+                        <polygon points="100,100 160,20 170,30" />
+                        <polygon points="100,100 200,95 200,105" />
+                        <polygon points="100,100 170,170 160,180" />
+                        <polygon points="100,100 95,200 105,200" />
+                        <polygon points="100,100 30,170 20,160" />
+                        <polygon points="100,100 0,105 0,95" />
+                        <polygon points="100,100 30,30 40,20" />
+                    </g>
+                </svg>
+                <svg class="circle-silhouette" viewBox="0 0 100 120">
+                    <circle cx="50" cy="18" r="10" />
+                    <path d="M50,28 C58,28 68,36 70,48 C72,60 65,72 62,82 C58,92 58,106 56,114 L46,114 C48,106 50,94 44,84 C38,74 32,62 34,48 C36,36 42,28 50,28 Z" />
+                    <path d="M34,48 C22,44 10,40 5,42 C3,44 4,48 7,49 C18,52 26,56 34,60 Z" />
+                    <path d="M70,48 C78,42 88,32 86,22 C85,19 80,21 81,25 C82,34 76,44 68,52 Z" />
+                    <path d="M46,92 C38,98 25,108 20,114 L28,116 C34,110 42,102 48,96 Z" />
+                </svg>
+                <div class="play-badge-corner"></div>
+            </div>
+
+            <!-- Circle 2: Lime Green with Magenta Border (Hip Sway Pose) -->
+            <div class="action-circle c-lime" onclick="playVideoByIndex(2)" title="Play Rhythm & Sweat">
+                <svg class="sunburst-star-rays" viewBox="0 0 200 200">
+                    <g fill="#25ff45" opacity="0.6">
+                        <polygon points="100,100 95,0 105,0" />
+                        <polygon points="100,100 160,20 170,30" />
+                        <polygon points="100,100 200,95 200,105" />
+                        <polygon points="100,100 170,170 160,180" />
+                        <polygon points="100,100 95,200 105,200" />
+                        <polygon points="100,100 30,170 20,160" />
+                        <polygon points="100,100 0,105 0,95" />
+                        <polygon points="100,100 30,30 40,20" />
+                    </g>
+                </svg>
+                <svg class="circle-silhouette" viewBox="0 0 100 120">
+                    <circle cx="50" cy="18" r="10" />
+                    <path d="M50,28 C62,30 70,42 72,56 C74,70 66,82 62,94 C58,104 56,112 55,116 L45,116 C46,110 48,100 42,92 C36,82 28,70 30,56 C32,42 40,30 50,28 Z" />
+                    <path d="M72,56 C80,48 86,36 84,24 C82,20 78,22 79,26 C80,35 75,44 68,52 Z" />
+                    <path d="M30,56 C24,48 18,36 20,24 C22,20 26,22 25,26 C24,35 27,44 34,52 Z" />
+                </svg>
+                <div class="play-badge-corner"></div>
+            </div>
+
+            <!-- Circle 3: Hot Magenta with Yellow Border & RADIATING SUNBURST (Active in image) -->
+            <div class="action-circle c-magenta" onclick="playVideoByIndex(4)" title="Play Live Crowd Party">
+                <!-- Glowing Sunburst Rays Radiating Out -->
+                <svg class="sunburst-star-rays" viewBox="0 0 200 200">
+                    <g fill="#ffee00" opacity="0.9">
+                        <polygon points="100,100 96,0 104,0" />
+                        <polygon points="100,100 140,10 148,18" />
+                        <polygon points="100,100 175,35 183,45" />
+                        <polygon points="100,100 195,80 200,90" />
+                        <polygon points="100,100 195,120 200,110" />
+                        <polygon points="100,100 183,155 175,165" />
+                        <polygon points="100,100 148,182 140,190" />
+                        <polygon points="100,100 104,200 96,200" />
+                        <polygon points="100,100 60,190 52,182" />
+                        <polygon points="100,100 25,165 17,155" />
+                        <polygon points="100,100 5,110 0,120" />
+                        <polygon points="100,100 5,90 0,80" />
+                        <polygon points="100,100 17,45 25,35" />
+                        <polygon points="100,100 52,18 60,10" />
+                    </g>
+                </svg>
+                <svg class="circle-silhouette" viewBox="0 0 100 120">
+                    <circle cx="50" cy="16" r="10" />
+                    <path d="M50,26 C58,26 66,34 68,48 C70,60 62,72 58,82 C54,90 62,102 68,110 L58,112 C52,104 46,94 42,84 C38,76 30,64 32,50 C34,36 42,26 50,26 Z" />
+                    <path d="M68,48 C78,38 88,24 92,10 C93,6 88,6 87,11 C83,22 75,34 66,42 Z" />
+                    <path d="M32,50 C24,40 16,25 10,12 C9,8 5,9 6,13 C9,24 18,36 28,45 Z" />
+                    <path d="M42,84 C34,92 24,96 16,98 L18,104 C28,102 36,96 44,88 Z" />
+                </svg>
+                <div class="play-badge-corner"></div>
+            </div>
+
+            <!-- Circle 4: Yellow with Magenta Border (Power Fitness Pose) -->
+            <div class="action-circle c-yellow" onclick="playVideoByIndex(6)" title="Play Reggaeton Power">
+                <svg class="sunburst-star-rays" viewBox="0 0 200 200">
+                    <g fill="#ff007f" opacity="0.6">
+                        <polygon points="100,100 95,0 105,0" />
+                        <polygon points="100,100 160,20 170,30" />
+                        <polygon points="100,100 200,95 200,105" />
+                        <polygon points="100,100 170,170 160,180" />
+                        <polygon points="100,100 95,200 105,200" />
+                        <polygon points="100,100 30,170 20,160" />
+                        <polygon points="100,100 0,105 0,95" />
+                        <polygon points="100,100 30,30 40,20" />
+                    </g>
+                </svg>
+                <svg class="circle-silhouette" viewBox="0 0 100 120">
+                    <circle cx="50" cy="18" r="10" />
+                    <path d="M50,28 C60,28 68,38 69,52 C70,66 64,78 60,88 C56,98 56,110 54,115 L44,115 C46,108 48,98 42,88 C36,78 30,66 32,52 C34,38 42,28 50,28 Z" />
+                    <path d="M69,52 C78,48 88,40 85,30 C82,24 76,28 78,34 C80,40 74,46 66,50 Z" />
+                    <path d="M32,52 C24,46 16,38 18,28 C20,22 26,24 25,30 C24,38 28,46 34,50 Z" />
+                </svg>
+                <div class="play-badge-corner"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FLOATING NOW PLAYING HUD -->
+    <div class="now-playing-pill">
+        <div class="eq-bars">
+            <span class="eq-bar"></span>
+            <span class="eq-bar"></span>
+            <span class="eq-bar"></span>
+            <span class="eq-bar"></span>
+        </div>
+        <div class="hud-info-meta">
+            <span class="hud-tag" id="hudTrackTag">Routine 1 of 9</span>
+            <span class="hud-title" id="hudTrackTitle">Latin Groove Blast</span>
+        </div>
+    </div>
+
+    <!-- FULLSCREEN THEATER MODAL (Native 9:16 Vertical Reel, Head-to-Toe View) -->
+    <div class="modal-theater" id="modalTheater" onclick="closeTheater(event)">
+        <div class="modal-theater-box" onclick="event.stopPropagation()">
+            <div class="modal-close-cross" onclick="closeTheater()">&times;</div>
+            <video id="theaterPlayer" controls autoplay playsinline></video>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="page-foot">
+        &copy; 2026 <span>Dance with Michelle</span> &bull; All Rights Reserved &bull; Let's Dance Together!
+    </footer>
+
+    <!-- PLAYLIST ENGINE: Continuously updates all panels, full-body alignment, zero blur -->
+    <script>
+        const playlist = [
+            { src: 'videos/zumba_dance.mp4', title: 'Latin Groove Blast' },
+            { src: 'videos/zumba_dance_2.mp4', title: 'High Tempo Cardio Party' },
+            { src: 'videos/zumba_dance_3.mp4', title: 'Rhythm & Sweat Intensive' },
+            { src: 'videos/zumba_dance_4.mp4', title: 'Afro-Latin Fusion' },
+            { src: 'videos/zumba_dance_5.mp4', title: 'Live Class Energy' },
+            { src: 'videos/zumba_dance_6.mp4', title: 'Salsa & Merengue Pop' },
+            { src: 'videos/zumba_dance_7.mp4', title: 'Reggaeton Power Hype' },
+            { src: 'videos/zumba_dance_8.mp4', title: 'Festival Energy Extravaganza' },
+            { src: 'videos/zumba_dance_9.mp4', title: 'Synchronized Groove' }
+        ];
+
+        let currentIndex = 0;
+        let isMuted = true;
+        let isTransitioning = false;
+
+        const pVideoCenter = document.getElementById('panelVideoCenter');
+        const pVideo1 = document.getElementById('panelVideo1');
+        const pVideo2 = document.getElementById('panelVideo2');
+        const pVideo4 = document.getElementById('panelVideo4');
+        const pVideo5 = document.getElementById('panelVideo5');
+
+        const progressFill = document.getElementById('boxProgressFill');
+        const hudTitle = document.getElementById('hudTrackTitle');
+        const hudTag = document.getElementById('hudTrackTag');
+        const audioIcon = document.getElementById('audioIcon');
+        const audioText = document.getElementById('audioText');
+
+        function initPlayer() {
+            if (pVideoCenter) {
+                pVideoCenter.addEventListener('timeupdate', handleTimeUpdate);
+                pVideoCenter.addEventListener('ended', handleVideoEnded);
+                pVideoCenter.addEventListener('error', handleVideoError);
+            }
+
+            updateAllPanels();
+            updateHUD();
+        }
+
+        function handleTimeUpdate(e) {
+            const v = pVideoCenter;
+            if (v && v.duration && v.duration > 0) {
+                const pct = (v.currentTime / v.duration) * 100;
+                if (progressFill) progressFill.style.width = pct + '%';
+
+                // Automatically crossfade to next video 0.4s before end
+                if (v.duration - v.currentTime <= 0.4 && !isTransitioning) {
+                    isTransitioning = true;
+                    nextPlaylistVideo();
+                }
+            }
+        }
+
+        function handleVideoEnded() {
+            if (!isTransitioning) {
+                isTransitioning = true;
+                nextPlaylistVideo();
+            }
+        }
+
+        function handleVideoError() {
+            console.warn('Playback error, advancing to next video...');
+            setTimeout(() => {
+                nextPlaylistVideo();
+            }, 1000);
+        }
+
+        function updateHUD() {
+            if (hudTag) hudTag.textContent = `Routine ${currentIndex + 1} of ${playlist.length}`;
+            if (hudTitle) hudTitle.textContent = playlist[currentIndex].title;
+        }
+
+        // Update all 5 panels so they show 5 distinct high-energy dance routines side-by-side
+        function updateAllPanels() {
+            const total = playlist.length;
+            const idxCenter = currentIndex;
+            const idx1 = (currentIndex + 1) % total;
+            const idx2 = (currentIndex + 3) % total;
+            const idx4 = (currentIndex + 4) % total;
+            const idx5 = (currentIndex + 7) % total;
+
+            if (pVideoCenter) {
+                pVideoCenter.src = playlist[idxCenter].src;
+                pVideoCenter.muted = isMuted;
+                pVideoCenter.play().catch(() => {});
+            }
+            if (pVideo1) {
+                pVideo1.src = playlist[idx1].src;
+                pVideo1.play().catch(() => {});
+            }
+            if (pVideo2) {
+                pVideo2.src = playlist[idx2].src;
+                pVideo2.play().catch(() => {});
+            }
+            if (pVideo4) {
+                pVideo4.src = playlist[idx4].src;
+                pVideo4.play().catch(() => {});
+            }
+            if (pVideo5) {
+                pVideo5.src = playlist[idx5].src;
+                pVideo5.play().catch(() => {});
+            }
+
+            isTransitioning = false;
+        }
+
+        function playVideoByIndex(index) {
+            if (index < 0) index = playlist.length - 1;
+            if (index >= playlist.length) index = 0;
+            currentIndex = index;
+
+            updateAllPanels();
+            updateHUD();
+        }
+
+        function nextPlaylistVideo() {
+            playVideoByIndex(currentIndex + 1);
+        }
+
+        function prevPlaylistVideo() {
+            playVideoByIndex(currentIndex - 1);
+        }
+
+        function toggleAudio() {
+            isMuted = !isMuted;
+            if (pVideoCenter) pVideoCenter.muted = isMuted;
+
+            if (isMuted) {
+                audioIcon.textContent = '🔊';
+                audioText.textContent = 'Unmute All';
+            } else {
+                audioIcon.textContent = '🔇';
+                audioText.textContent = 'Mute All';
+            }
+        }
+
+        function openTheaterCurrent() {
+            openTheater(playlist[currentIndex].src);
+        }
+
+        function openTheater(src) {
+            const modal = document.getElementById('modalTheater');
+            const player = document.getElementById('theaterPlayer');
+            player.src = src;
+            modal.style.display = 'flex';
+            player.play();
+        }
+
+        function closeTheater(event) {
+            const modal = document.getElementById('modalTheater');
+            const player = document.getElementById('theaterPlayer');
+            player.pause();
+            player.src = '';
+            modal.style.display = 'none';
+        }
+
+        window.addEventListener('DOMContentLoaded', initPlayer);
+    </script>
+</body>
+</html>

@@ -734,10 +734,6 @@ button {
     z-index: -1;
 }
 
-.slide-image-wrapper::after {
-    content: none;
-}
-
 .slide-image {
     width: 100%;
     height: 100%;
