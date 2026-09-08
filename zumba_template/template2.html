@@ -205,6 +205,35 @@
             width: clamp(440px, 42vw, 620px);
         }
 
+        .hero-video-bg {
+            cursor: pointer;
+        }
+
+        .hero-play-indicator {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: rgba(255, 0, 127, 0.9);
+            border: 3px solid #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 30px rgba(255, 0, 127, 0.7);
+            z-index: 8;
+            pointer-events: none;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+        .hero-play-indicator svg {
+            margin-left: 5px;
+            fill: #ffffff;
+            width: 32px;
+            height: 32px;
+        }
+
         /* -------------------------------------------------------------
            HERO PAINT SPLASHES (Framing the Video on Left & Right)
         ------------------------------------------------------------- */
@@ -1644,9 +1673,12 @@
     ------------------------------------------------------------- -->
     <section class="hero-banner" id="home">
         <!-- Live Video Playlist playing continuously in background -->
-        <div class="hero-video-bg">
-            <video id="heroVid1" class="active" autoplay muted playsinline src="videos/zumba_dance.mp4" preload="auto"></video>
-            <video id="heroVid2" muted playsinline preload="auto"></video>
+        <div class="hero-video-bg" id="heroVideoBg" onclick="toggleHeroPlayPause()">
+            <video id="heroVid1" class="active" autoplay muted playsinline webkit-playsinline src="videos/zumba_dance.mp4" preload="auto"></video>
+            <video id="heroVid2" muted playsinline webkit-playsinline preload="auto"></video>
+            <div class="hero-play-indicator" id="heroPlayIndicator" style="display:none;">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
         </div>
 
         <!-- Left Yellow Paint Splash (Behind Headline Text) -->
@@ -2117,12 +2149,70 @@
             return activeVidBuffer === 1 ? v2 : v1;
         }
 
+        function updatePlayIndicator(isPaused) {
+            const ind = document.getElementById('heroPlayIndicator');
+            if (ind) {
+                ind.style.display = isPaused ? 'flex' : 'none';
+            }
+        }
+
+        function toggleHeroPlayPause() {
+            const current = getActiveVid();
+            if (current.paused) {
+                current.play().then(() => {
+                    updatePlayIndicator(false);
+                }).catch(() => {});
+            } else {
+                current.pause();
+                updatePlayIndicator(true);
+            }
+        }
+
         function initHeroPlaylist() {
             [v1, v2].forEach(v => {
+                v.muted = true;
+                v.defaultMuted = true;
+                v.setAttribute('playsinline', '');
+                v.setAttribute('webkit-playsinline', '');
                 v.addEventListener('timeupdate', handleTimeUpdate);
                 v.addEventListener('ended', handleVideoEnded);
+                v.addEventListener('play', () => {
+                    if (v === getActiveVid()) updatePlayIndicator(false);
+                });
+                v.addEventListener('pause', () => {
+                    if (v === getActiveVid() && !isTransitioning) updatePlayIndicator(true);
+                });
             });
             updateTrackLabel();
+
+            // Explicitly start playback on page load
+            const startPlay = () => {
+                v1.muted = true;
+                v1.defaultMuted = true;
+                const p = v1.play();
+                if (p !== undefined) {
+                    p.then(() => {
+                        updatePlayIndicator(false);
+                    }).catch(() => {
+                        // If iOS blocks unprompted autoplay (e.g. Low Power Mode), show indicator
+                        updatePlayIndicator(true);
+
+                        // Unlock on the very first touch/click/scroll anywhere
+                        const unlock = () => {
+                            v1.play().then(() => updatePlayIndicator(false)).catch(() => {});
+                            document.removeEventListener('touchstart', unlock);
+                            document.removeEventListener('pointerdown', unlock);
+                            document.removeEventListener('click', unlock);
+                        };
+                        document.addEventListener('touchstart', unlock, { once: true, passive: true });
+                        document.addEventListener('pointerdown', unlock, { once: true, passive: true });
+                        document.addEventListener('click', unlock, { once: true });
+                    });
+                }
+            };
+
+            // Start immediately
+            startPlay();
         }
 
         function handleTimeUpdate(e) {
@@ -2162,6 +2252,9 @@
 
             incoming.src = playlist[currentIdx].src;
             incoming.muted = isMuted;
+            incoming.defaultMuted = isMuted;
+            incoming.setAttribute('playsinline', '');
+            incoming.setAttribute('webkit-playsinline', '');
             incoming.currentTime = 0;
 
             const p = incoming.play();
@@ -2170,6 +2263,7 @@
                     incoming.classList.add('active');
                     outgoing.classList.remove('active');
                     activeVidBuffer = activeVidBuffer === 1 ? 2 : 1;
+                    updatePlayIndicator(false);
                     setTimeout(() => {
                         outgoing.pause();
                         isTransitioning = false;
@@ -2180,6 +2274,7 @@
                     outgoing.classList.remove('active');
                     activeVidBuffer = activeVidBuffer === 1 ? 2 : 1;
                     isTransitioning = false;
+                    updatePlayIndicator(true);
                     updateTrackLabel();
                 });
             }
@@ -2225,9 +2320,11 @@
         function openHeroModal(src) {
             const modal = document.getElementById('heroModal');
             const player = document.getElementById('modalVidPlayer');
+            player.setAttribute('playsinline', '');
+            player.setAttribute('webkit-playsinline', '');
             player.src = src;
             modal.style.display = 'flex';
-            player.play();
+            player.play().catch(() => {});
         }
 
         function closeHeroModal() {
@@ -2238,7 +2335,11 @@
             modal.style.display = 'none';
         }
 
-        window.addEventListener('DOMContentLoaded', initHeroPlaylist);
+        if (document.readyState === 'loading') {
+            window.addEventListener('DOMContentLoaded', initHeroPlaylist);
+        } else {
+            initHeroPlaylist();
+        }
     </script>
 </body>
 </html>
