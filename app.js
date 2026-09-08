@@ -421,7 +421,9 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Format category
             let categoryText = proj.categories && proj.categories.length > 0 ? proj.categories.join(' / ') : 'VFX Asset';
-            if (tLower.includes('morphology')) {
+            if (tLower.includes('surviving')) {
+                categoryText = 'Asset Supervisor';
+            } else if (tLower.includes('morphology')) {
                 categoryText = 'ML 3D Assets';
             }
             
