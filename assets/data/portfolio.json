@@ -435,7 +435,7 @@
             "maa"
         ],
         "categories": [
-            "Creatures",
+            "Modelling and Faceshapes",
             "Visual Effects"
         ],
         "assets": [
@@ -745,9 +745,9 @@
         "id": 17961733,
         "title": "Digital Ngannou",
         "hash_id": "OGrb6w",
-        "description": "<p>Virtual Francis Ngannou for his fight with Tyson Fury promo. It was displayed on Billboards in Piccadilly Square London, Times Square New York, Tokyo and the state of the art MSG Sphere Las Vegas. Modeled, textured, and groomed in Maya, Arnold XGen.</p>",
+        "description": "<p>I created the digital Francis Ngannou for his fight with Tyson Fury promo. It was displayed on Billboards in Piccadilly Circus London, Times Square New York, Tokyo and the state of the art MSG Sphere Las Vegas. Sculpt in ZBrush, texture in Mari, model groom and lookdev in Maya.</p>",
         "created_at": "2024-03-28T20:14:00.295-05:00",
-        "views_count": 316,
+        "views_count": 327,
         "likes_count": 12,
         "software_items": [
             "ZBrush",
@@ -760,137 +760,23 @@
         "categories": [],
         "assets": [
             {
-                "id": 74287070,
+                "id": 102854406,
                 "title": "",
                 "asset_type": "video",
                 "width": 295,
                 "height": 166,
-                "image_url": "https://cdna.artstation.com/p/assets/videos/images/074/287/070/large/harsh-borah-1824086480-05965ecdbc7220644b3d0b9a5c6dc6f34607bcf926cbe522a5a95be26074f5b1-d-295x166.jpg?1711674222",
+                "image_url": "https://cdna.artstation.com/p/assets/videos/images/102/854/406/large/harsh-borah-2120961743-4cd085232c767cdbe5404c4eee9db3659fe9bcf8ae46b950ef31be71e5c19d85-d-295x166.jpg?1790804068",
                 "viewport_type": null,
                 "has_embedded_player": true,
-                "player_embedded": "<iframe src=\"https://player.vimeo.com/video/928620011?app_id=122963&amp;dnt=1\"   frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture; clipboard-write\" title=\"GEA_TysonFuryVsNgannou_NewYork\"></iframe>"
+                "player_embedded": "<iframe src=\"https://player.vimeo.com/video/1164355985?app_id=122963&amp;dnt=1\"   frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" title=\"GEA - Tyson Fury Vs Ngannou | Battle Of The Baddest | 2023\"></iframe>"
             },
             {
-                "id": 74287361,
+                "id": 74287086,
                 "title": "",
-                "asset_type": "video",
-                "width": 295,
-                "height": 166,
-                "image_url": "https://cdnb.artstation.com/p/assets/videos/images/074/287/361/large/harsh-borah-1824093071-6cfa28a261db8813007703cc5bb728fc55b8524986e626ac917ca623f203f442-d-295x166.jpg?1711675239",
-                "viewport_type": null,
-                "has_embedded_player": true,
-                "player_embedded": "<iframe src=\"https://player.vimeo.com/video/928624017?app_id=122963&amp;dnt=1\"   frameborder=\"0\" allow=\"autoplay; fullscreen; picture-in-picture; clipboard-write\" title=\"GEA_TysonFuryVsNgannou_London\"></iframe>"
-            },
-            {
-                "id": 74298564,
-                "title": null,
-                "asset_type": "video_clip",
-                "width": 1920,
-                "height": 1076,
-                "image_url": "https://cdna.artstation.com/p/assets/video_clips/images/074/298/564/large/harsh-borah-thumb.jpg?1711713508",
-                "viewport_type": null,
-                "has_embedded_player": true,
-                "player_embedded": "<iframe src='https://www.artstation.com/api/v2/animation/video_clips/39342fd8-d7ff-4c60-a587-9aa0bb81dec4/embed.html?s=d951ce5a4c9bab0c2fa6ccf18215be907c728c1f2b001798e3c9a65d0293c328&t=1779270543' width='1920' height='1076' frameborder='0' allowfullscreen allows='autoplay; fullscreen' style='max-width: 1920px; max-height: 1076px;'></iframe>",
-                "video_url": "https://cdn.artstation.com/p/video_sources/001/888/216/ezgif-3-323c10bf1e.mp4"
-            },
-            {
-                "id": 74294066,
-                "title": "MSG Sphere Las Vegas",
                 "asset_type": "image",
-                "width": 1280,
-                "height": 720,
-                "image_url": "https://cdna.artstation.com/p/assets/images/images/074/294/066/large/harsh-borah-battle-of-the-baddest-sphere.jpg?1711703005",
-                "viewport_type": null,
-                "has_embedded_player": false,
-                "player_embedded": null
-            },
-            {
-                "id": 74294119,
-                "title": "MSG Sphere Las Vegas",
-                "asset_type": "image",
-                "width": 950,
-                "height": 534,
-                "image_url": "https://cdnb.artstation.com/p/assets/images/images/074/294/119/large/harsh-borah-riyadh-string-out-00-00-43-08-still001-00-00-00-24-still001-950x534.jpg?1711703109",
-                "viewport_type": null,
-                "has_embedded_player": false,
-                "player_embedded": null
-            },
-            {
-                "id": 74298039,
-                "title": null,
-                "asset_type": "video_clip",
-                "width": 1920,
-                "height": 1076,
-                "image_url": "https://cdnb.artstation.com/p/assets/video_clips/images/074/298/039/large/harsh-borah-thumb.jpg?1711712365",
-                "viewport_type": null,
-                "has_embedded_player": true,
-                "player_embedded": "<iframe src='https://www.artstation.com/api/v2/animation/video_clips/1f06ba47-168e-4fca-891f-fae48db614e2/embed.html?s=ab1a53d10656b6362d0fcc48e81a9ba776aa1e357fe9a02550f100e6601274bf&t=1779270543' width='1920' height='1076' frameborder='0' allowfullscreen allows='autoplay; fullscreen' style='max-width: 1920px; max-height: 1076px;'></iframe>",
-                "video_url": "https://cdn.artstation.com/p/video_sources/001/888/194/ezgif-7-f71890c1d1.mp4"
-            },
-            {
-                "id": 74298357,
-                "title": "Piccadilly Circus London at night ",
-                "asset_type": "video_clip",
-                "width": 1920,
-                "height": 1080,
-                "image_url": "https://cdnb.artstation.com/p/assets/video_clips/images/074/298/357/large/harsh-borah-thumb.jpg?1711713108",
-                "viewport_type": null,
-                "has_embedded_player": true,
-                "player_embedded": "<iframe src='https://www.artstation.com/api/v2/animation/video_clips/e565c906-dc5a-4cf7-aa96-93e22727f8b9/embed.html?s=c1e6d32bc5fb1ad8e337cc9c63132424eb9e70ff979966b4c0915a4831299e11&t=1779270543' width='1920' height='1080' frameborder='0' allowfullscreen allows='autoplay; fullscreen' style='max-width: 1920px; max-height: 1080px;'></iframe>",
-                "video_url": "https://cdn.artstation.com/p/video_sources/001/888/209/ezgif-2-bb5952722f.mp4"
-            },
-            {
-                "id": 74294297,
-                "title": "Piccadilly Circus London ",
-                "asset_type": "image",
-                "width": 950,
-                "height": 625,
-                "image_url": "https://cdnb.artstation.com/p/assets/images/images/074/294/297/large/harsh-borah-dsc06703-950x625.jpg?1711703574",
-                "viewport_type": null,
-                "has_embedded_player": false,
-                "player_embedded": null
-            },
-            {
-                "id": 74294295,
-                "title": "Times Square New York ",
-                "asset_type": "image",
-                "width": 950,
-                "height": 623,
-                "image_url": "https://cdnb.artstation.com/p/assets/images/images/074/294/295/large/harsh-borah-al-arabia-nycd-350-10-17-23-9-950x623.jpg?1711703571",
-                "viewport_type": null,
-                "has_embedded_player": false,
-                "player_embedded": null
-            },
-            {
-                "id": 74298105,
-                "title": null,
-                "asset_type": "video_clip",
-                "width": 1920,
-                "height": 1082,
-                "image_url": "https://cdnb.artstation.com/p/assets/video_clips/images/074/298/105/large/harsh-borah-thumb.jpg?1711712540",
-                "viewport_type": null,
-                "has_embedded_player": true,
-                "player_embedded": "<iframe src='https://www.artstation.com/api/v2/animation/video_clips/bfa817da-5b40-4953-8ef4-568c414b68c3/embed.html?s=3dc3b3d31e5391e5f487648da4f972a6242f6ac13d860cfc86adf88d811c0800&t=1779270543' width='1920' height='1082' frameborder='0' allowfullscreen allows='autoplay; fullscreen' style='max-width: 1920px; max-height: 1082px;'></iframe>",
-                "video_url": "https://cdn.artstation.com/p/video_sources/001/888/196/ezgif-7-950d696205.mp4"
-            },
-            {
-                "id": 74294291,
-                "title": "Tokyo",
-                "asset_type": "image",
-                "width": 950,
-                "height": 633,
-                "image_url": "https://cdnb.artstation.com/p/assets/images/images/074/294/291/large/harsh-borah-still-2-950x633.jpg?1711703566",
-                "viewport_type": null,
-                "has_embedded_player": false,
-                "player_embedded": null
-            },
-            {
-                "id": 74294294,
-                "title": "Tokyo ",
-                "asset_type": "image",
-                "width": 950,
-                "height": 633,
-                "image_url": "https://cdna.artstation.com/p/assets/images/images/074/294/294/large/harsh-borah-still-1-950x633.jpg?1711703569",
+                "width": 1979,
+                "height": 2048,
+                "image_url": "https://cdna.artstation.com/p/assets/images/images/074/287/086/large/harsh-borah-ngannou-renders-0003.jpg?1711674256",
                 "viewport_type": null,
                 "has_embedded_player": false,
                 "player_embedded": null
@@ -902,17 +788,6 @@
                 "width": 2048,
                 "height": 2048,
                 "image_url": "https://cdna.artstation.com/p/assets/images/images/074/287/088/large/harsh-borah-ngannou-renders-0004.jpg?1711674264",
-                "viewport_type": null,
-                "has_embedded_player": false,
-                "player_embedded": null
-            },
-            {
-                "id": 74287086,
-                "title": "",
-                "asset_type": "image",
-                "width": 1979,
-                "height": 2048,
-                "image_url": "https://cdna.artstation.com/p/assets/images/images/074/287/086/large/harsh-borah-ngannou-renders-0003.jpg?1711674256",
                 "viewport_type": null,
                 "has_embedded_player": false,
                 "player_embedded": null
@@ -962,6 +837,167 @@
                 "player_embedded": null
             },
             {
+                "id": 74298564,
+                "title": null,
+                "asset_type": "video_clip",
+                "width": 1920,
+                "height": 1076,
+                "image_url": "https://cdna.artstation.com/p/assets/video_clips/images/074/298/564/large/harsh-borah-thumb.jpg?1711713508",
+                "viewport_type": null,
+                "has_embedded_player": true,
+                "player_embedded": "<iframe src='https://www.artstation.com/api/v2/animation/video_clips/39342fd8-d7ff-4c60-a587-9aa0bb81dec4/embed.html?s=c12c076e2270f11705531eb5a32a6fea6b64dfc8e68d5e047a4efca70d5e5d08&t=1790809107' width='1920' height='1076' frameborder='0' allowfullscreen allows='autoplay; fullscreen' style='max-width: 1920px; max-height: 1076px;'></iframe>",
+                "video_url": "https://cdn.artstation.com/p/video_sources/001/888/216/ezgif-3-323c10bf1e.mp4"
+            },
+            {
+                "id": 74299719,
+                "title": "AR",
+                "asset_type": "video_clip",
+                "width": 1920,
+                "height": 1082,
+                "image_url": "https://cdnb.artstation.com/p/assets/video_clips/images/074/299/719/large/harsh-borah-thumb.jpg?1711716126",
+                "viewport_type": null,
+                "has_embedded_player": true,
+                "player_embedded": "<iframe src='https://www.artstation.com/api/v2/animation/video_clips/e5e07eeb-19d9-4b45-97ce-5128da3581d1/embed.html?s=ca9cd3b38b961b9b27cb0b1900d0ee8f04f087a53f367be60c35aa758c2e2182&t=1790809107' width='1920' height='1082' frameborder='0' allowfullscreen allows='autoplay; fullscreen' style='max-width: 1920px; max-height: 1082px;'></iframe>",
+                "video_url": "https://cdn.artstation.com/p/video_sources/001/888/288/ezgif-5-5ed9282c02.mp4"
+            },
+            {
+                "id": 74299745,
+                "title": null,
+                "asset_type": "video_clip",
+                "width": 1920,
+                "height": 1082,
+                "image_url": "https://cdnb.artstation.com/p/assets/video_clips/images/074/299/745/large/harsh-borah-thumb.jpg?1711716170",
+                "viewport_type": null,
+                "has_embedded_player": true,
+                "player_embedded": "<iframe src='https://www.artstation.com/api/v2/animation/video_clips/008b2275-97b9-4ef1-8d97-c0ee040f21ea/embed.html?s=678d2f9e66b7f3cc9afa8658cd5aef9bff2716943b2d172bb06b1abf0d21691d&t=1790809107' width='1920' height='1082' frameborder='0' allowfullscreen allows='autoplay; fullscreen' style='max-width: 1920px; max-height: 1082px;'></iframe>",
+                "video_url": "https://cdn.artstation.com/p/video_sources/001/888/290/ezgif-5-b926c3a4f4.mp4"
+            },
+            {
+                "id": 74294119,
+                "title": "MSG Sphere Las Vegas",
+                "asset_type": "image",
+                "width": 950,
+                "height": 534,
+                "image_url": "https://cdnb.artstation.com/p/assets/images/images/074/294/119/large/harsh-borah-riyadh-string-out-00-00-43-08-still001-00-00-00-24-still001-950x534.jpg?1711703109",
+                "viewport_type": null,
+                "has_embedded_player": false,
+                "player_embedded": null
+            },
+            {
+                "id": 74317640,
+                "title": "3D Print",
+                "asset_type": "video_clip",
+                "width": 1920,
+                "height": 1082,
+                "image_url": "https://cdna.artstation.com/p/assets/video_clips/images/074/317/640/large/harsh-borah-thumb.jpg?1711756494",
+                "viewport_type": null,
+                "has_embedded_player": true,
+                "player_embedded": "<iframe src='https://www.artstation.com/api/v2/animation/video_clips/ae6d57a3-408d-46ff-9aa8-4956aad4caf9/embed.html?s=532e0e09b776bee3bc189fee4b3b1691d61abd9281a532f5fb589ee89ebf10d0&t=1790809107' width='1920' height='1082' frameborder='0' allowfullscreen allows='autoplay; fullscreen' style='max-width: 1920px; max-height: 1082px;'></iframe>",
+                "video_url": "https://cdn.artstation.com/p/video_sources/001/889/247/ezgif-2-68e640d203.mp4"
+            },
+            {
+                "id": 74298039,
+                "title": null,
+                "asset_type": "video_clip",
+                "width": 1920,
+                "height": 1076,
+                "image_url": "https://cdnb.artstation.com/p/assets/video_clips/images/074/298/039/large/harsh-borah-thumb.jpg?1711712365",
+                "viewport_type": null,
+                "has_embedded_player": true,
+                "player_embedded": "<iframe src='https://www.artstation.com/api/v2/animation/video_clips/1f06ba47-168e-4fca-891f-fae48db614e2/embed.html?s=99480d33c570dcbb3654dce13aa68ade8bc8b66253c90f8c9cd5cd8c929dc83e&t=1790809107' width='1920' height='1076' frameborder='0' allowfullscreen allows='autoplay; fullscreen' style='max-width: 1920px; max-height: 1076px;'></iframe>",
+                "video_url": "https://cdn.artstation.com/p/video_sources/001/888/194/ezgif-7-f71890c1d1.mp4"
+            },
+            {
+                "id": 74452126,
+                "title": "",
+                "asset_type": "video",
+                "width": 1280,
+                "height": 720,
+                "image_url": "https://cdna.artstation.com/p/assets/videos/images/074/452/126/large/harsh-borah-maxresdefault.jpg?1712101735",
+                "viewport_type": null,
+                "has_embedded_player": true,
+                "player_embedded": "<iframe   src=\"https://www.youtube-nocookie.com/embed/7Dx_Uo45H3s?feature=oembed&rel=0\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen title=\"Battle of the Baddest: Tyson Fury vs Francis Ngannou fight advertisement on MSG Sphere in Las Vegas\"></iframe>"
+            },
+            {
+                "id": 74452166,
+                "title": "",
+                "asset_type": "video",
+                "width": 1280,
+                "height": 720,
+                "image_url": "https://cdna.artstation.com/p/assets/videos/images/074/452/166/large/harsh-borah-maxresdefault.jpg?1712101833",
+                "viewport_type": null,
+                "has_embedded_player": true,
+                "player_embedded": "<iframe   src=\"https://www.youtube-nocookie.com/embed/8FhkI3neRNs?feature=oembed&rel=0\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen title=\"Tyson Fury vs Francis Ngannou @ The Sphere\"></iframe>"
+            },
+            {
+                "id": 74317790,
+                "title": "3D Print",
+                "asset_type": "video_clip",
+                "width": 1920,
+                "height": 1082,
+                "image_url": "https://cdna.artstation.com/p/assets/video_clips/images/074/317/790/large/harsh-borah-thumb.jpg?1711756937",
+                "viewport_type": null,
+                "has_embedded_player": true,
+                "player_embedded": "<iframe src='https://www.artstation.com/api/v2/animation/video_clips/ad8e949d-fef1-4b0f-bc4e-4b37bef0552b/embed.html?s=bf2497baeb23ff0443a8010e3a20d0ec97db9bd03c2d5039a6bf8164cedf1058&t=1790809107' width='1920' height='1082' frameborder='0' allowfullscreen allows='autoplay; fullscreen' style='max-width: 1920px; max-height: 1082px;'></iframe>",
+                "video_url": "https://cdn.artstation.com/p/video_sources/001/889/264/ezgif-2-9d2ed1d4ed.mp4"
+            },
+            {
+                "id": 74298357,
+                "title": "Piccadilly Circus London at night ",
+                "asset_type": "video_clip",
+                "width": 1920,
+                "height": 1080,
+                "image_url": "https://cdnb.artstation.com/p/assets/video_clips/images/074/298/357/large/harsh-borah-thumb.jpg?1711713108",
+                "viewport_type": null,
+                "has_embedded_player": true,
+                "player_embedded": "<iframe src='https://www.artstation.com/api/v2/animation/video_clips/e565c906-dc5a-4cf7-aa96-93e22727f8b9/embed.html?s=e23bacc4cf591a3936132f4ec208699a8c7edcb7c845f641f3151400ab46a423&t=1790809107' width='1920' height='1080' frameborder='0' allowfullscreen allows='autoplay; fullscreen' style='max-width: 1920px; max-height: 1080px;'></iframe>",
+                "video_url": "https://cdn.artstation.com/p/video_sources/001/888/209/ezgif-2-bb5952722f.mp4"
+            },
+            {
+                "id": 74294297,
+                "title": "Piccadilly Circus London ",
+                "asset_type": "image",
+                "width": 950,
+                "height": 625,
+                "image_url": "https://cdnb.artstation.com/p/assets/images/images/074/294/297/large/harsh-borah-dsc06703-950x625.jpg?1711703574",
+                "viewport_type": null,
+                "has_embedded_player": false,
+                "player_embedded": null
+            },
+            {
+                "id": 74294295,
+                "title": "Times Square New York ",
+                "asset_type": "image",
+                "width": 950,
+                "height": 623,
+                "image_url": "https://cdnb.artstation.com/p/assets/images/images/074/294/295/large/harsh-borah-al-arabia-nycd-350-10-17-23-9-950x623.jpg?1711703571",
+                "viewport_type": null,
+                "has_embedded_player": false,
+                "player_embedded": null
+            },
+            {
+                "id": 74294291,
+                "title": "Tokyo",
+                "asset_type": "image",
+                "width": 950,
+                "height": 633,
+                "image_url": "https://cdnb.artstation.com/p/assets/images/images/074/294/291/large/harsh-borah-still-2-950x633.jpg?1711703566",
+                "viewport_type": null,
+                "has_embedded_player": false,
+                "player_embedded": null
+            },
+            {
+                "id": 74294294,
+                "title": "Tokyo ",
+                "asset_type": "image",
+                "width": 950,
+                "height": 633,
+                "image_url": "https://cdna.artstation.com/p/assets/images/images/074/294/294/large/harsh-borah-still-1-950x633.jpg?1711703569",
+                "viewport_type": null,
+                "has_embedded_player": false,
+                "player_embedded": null
+            },
+            {
                 "id": 74298206,
                 "title": "Motion capture",
                 "asset_type": "video_clip",
@@ -970,7 +1006,7 @@
                 "image_url": "https://cdna.artstation.com/p/assets/video_clips/images/074/298/206/large/harsh-borah-thumb.jpg?1711712806",
                 "viewport_type": null,
                 "has_embedded_player": true,
-                "player_embedded": "<iframe src='https://www.artstation.com/api/v2/animation/video_clips/c2ce5e3d-fb8e-4e14-87d7-e79d624afca4/embed.html?s=93c79dd7192d4ffb42bb73d3f98cf4e033d90a696f91e60a9aeb9c3977e46a2a&t=1779270543' width='1920' height='1080' frameborder='0' allowfullscreen allows='autoplay; fullscreen' style='max-width: 1920px; max-height: 1080px;'></iframe>",
+                "player_embedded": "<iframe src='https://www.artstation.com/api/v2/animation/video_clips/c2ce5e3d-fb8e-4e14-87d7-e79d624afca4/embed.html?s=4bfd85fc27a69c302e013c6edcdd808ba536f69a2386e1d541e90e5161e33c88&t=1790809107' width='1920' height='1080' frameborder='0' allowfullscreen allows='autoplay; fullscreen' style='max-width: 1920px; max-height: 1080px;'></iframe>",
                 "video_url": "https://cdn.artstation.com/p/video_sources/001/888/207/ezgif-7-1b5b1efd42.mp4"
             },
             {
@@ -982,7 +1018,7 @@
                 "image_url": "https://cdna.artstation.com/p/assets/video_clips/images/074/298/260/large/harsh-borah-thumb.jpg?1711712902",
                 "viewport_type": null,
                 "has_embedded_player": true,
-                "player_embedded": "<iframe src='https://www.artstation.com/api/v2/animation/video_clips/3fd78e6a-4c38-48df-9654-303ecd1b9f94/embed.html?s=64819fe78f559bb662ffeea82d7cf1bcc2c5fe9e4f5560f027acd78546e1e2d0&t=1779270543' width='1920' height='1080' frameborder='0' allowfullscreen allows='autoplay; fullscreen' style='max-width: 1920px; max-height: 1080px;'></iframe>",
+                "player_embedded": "<iframe src='https://www.artstation.com/api/v2/animation/video_clips/3fd78e6a-4c38-48df-9654-303ecd1b9f94/embed.html?s=275a7e5b7f8e8caa4ef316eceaadee71ee91e38db5e65f3827fbeeea9038c772&t=1790809107' width='1920' height='1080' frameborder='0' allowfullscreen allows='autoplay; fullscreen' style='max-width: 1920px; max-height: 1080px;'></iframe>",
                 "video_url": "https://cdn.artstation.com/p/video_sources/001/888/208/ezgif-6-d37acec324.mp4"
             },
             {
@@ -1028,76 +1064,6 @@
                 "viewport_type": null,
                 "has_embedded_player": false,
                 "player_embedded": null
-            },
-            {
-                "id": 74452126,
-                "title": "",
-                "asset_type": "video",
-                "width": 1280,
-                "height": 720,
-                "image_url": "https://cdna.artstation.com/p/assets/videos/images/074/452/126/large/harsh-borah-maxresdefault.jpg?1712101735",
-                "viewport_type": null,
-                "has_embedded_player": true,
-                "player_embedded": "<iframe   src=\"https://www.youtube-nocookie.com/embed/7Dx_Uo45H3s?feature=oembed&rel=0\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen title=\"Battle of the Baddest: Tyson Fury vs Francis Ngannou fight advertisement on MSG Sphere in Las Vegas\"></iframe>"
-            },
-            {
-                "id": 74452166,
-                "title": "",
-                "asset_type": "video",
-                "width": 1280,
-                "height": 720,
-                "image_url": "https://cdna.artstation.com/p/assets/videos/images/074/452/166/large/harsh-borah-maxresdefault.jpg?1712101833",
-                "viewport_type": null,
-                "has_embedded_player": true,
-                "player_embedded": "<iframe   src=\"https://www.youtube-nocookie.com/embed/8FhkI3neRNs?feature=oembed&rel=0\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen title=\"Tyson Fury vs Francis Ngannou @ The Sphere\"></iframe>"
-            },
-            {
-                "id": 74299719,
-                "title": "AR",
-                "asset_type": "video_clip",
-                "width": 1920,
-                "height": 1082,
-                "image_url": "https://cdnb.artstation.com/p/assets/video_clips/images/074/299/719/large/harsh-borah-thumb.jpg?1711716126",
-                "viewport_type": null,
-                "has_embedded_player": true,
-                "player_embedded": "<iframe src='https://www.artstation.com/api/v2/animation/video_clips/e5e07eeb-19d9-4b45-97ce-5128da3581d1/embed.html?s=c9ed276e537532b3cca031cd4ea14d4dc2a45852641cf3cf91bf7ecf7a4706d2&t=1779270543' width='1920' height='1082' frameborder='0' allowfullscreen allows='autoplay; fullscreen' style='max-width: 1920px; max-height: 1082px;'></iframe>",
-                "video_url": "https://cdn.artstation.com/p/video_sources/001/888/288/ezgif-5-5ed9282c02.mp4"
-            },
-            {
-                "id": 74299745,
-                "title": null,
-                "asset_type": "video_clip",
-                "width": 1920,
-                "height": 1082,
-                "image_url": "https://cdnb.artstation.com/p/assets/video_clips/images/074/299/745/large/harsh-borah-thumb.jpg?1711716170",
-                "viewport_type": null,
-                "has_embedded_player": true,
-                "player_embedded": "<iframe src='https://www.artstation.com/api/v2/animation/video_clips/008b2275-97b9-4ef1-8d97-c0ee040f21ea/embed.html?s=a2ce7d6c364df0396a6571692cfc3e1f94db066372dcccdea4106c028dc44899&t=1779270543' width='1920' height='1082' frameborder='0' allowfullscreen allows='autoplay; fullscreen' style='max-width: 1920px; max-height: 1082px;'></iframe>",
-                "video_url": "https://cdn.artstation.com/p/video_sources/001/888/290/ezgif-5-b926c3a4f4.mp4"
-            },
-            {
-                "id": 74317640,
-                "title": "3D Print",
-                "asset_type": "video_clip",
-                "width": 1920,
-                "height": 1082,
-                "image_url": "https://cdna.artstation.com/p/assets/video_clips/images/074/317/640/large/harsh-borah-thumb.jpg?1711756494",
-                "viewport_type": null,
-                "has_embedded_player": true,
-                "player_embedded": "<iframe src='https://www.artstation.com/api/v2/animation/video_clips/ae6d57a3-408d-46ff-9aa8-4956aad4caf9/embed.html?s=4bb53cc7340caa3a93b39d68d76b926db97ff667ced95e05d3fa7e944354bba9&t=1779270543' width='1920' height='1082' frameborder='0' allowfullscreen allows='autoplay; fullscreen' style='max-width: 1920px; max-height: 1082px;'></iframe>",
-                "video_url": "https://cdn.artstation.com/p/video_sources/001/889/247/ezgif-2-68e640d203.mp4"
-            },
-            {
-                "id": 74317790,
-                "title": "3D Print",
-                "asset_type": "video_clip",
-                "width": 1920,
-                "height": 1082,
-                "image_url": "https://cdna.artstation.com/p/assets/video_clips/images/074/317/790/large/harsh-borah-thumb.jpg?1711756937",
-                "viewport_type": null,
-                "has_embedded_player": true,
-                "player_embedded": "<iframe src='https://www.artstation.com/api/v2/animation/video_clips/ad8e949d-fef1-4b0f-bc4e-4b37bef0552b/embed.html?s=bd6746123389d9077af58fa8d9cb7a1dbdc43df4029b70ce4199c6e751ded65e&t=1779270543' width='1920' height='1082' frameborder='0' allowfullscreen allows='autoplay; fullscreen' style='max-width: 1920px; max-height: 1082px;'></iframe>",
-                "video_url": "https://cdn.artstation.com/p/video_sources/001/889/264/ezgif-2-9d2ed1d4ed.mp4"
             }
         ]
     },
