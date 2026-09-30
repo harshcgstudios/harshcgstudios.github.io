@@ -874,6 +874,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function closeLightbox(updateHash = true) {
         const shouldUpdateHash = (updateHash === true || typeof updateHash === 'object');
+        // Only strip the #project/ hash if the lightbox was actually open.
+        // On initial page load, init() calls navigateToSection('home') -> closeLightbox()
+        // BEFORE the async portfolio.json fetch resolves; stripping the hash at that point
+        // would break deep links (#project/xxxx) before handleInitialHash() can read it.
+        const wasOpen = lightbox.classList.contains('active');
         lightbox.classList.remove('active');
         document.body.style.overflow = ''; // Resume scrolling
         // Destroy media elements to stop any video or audio playback instantly
@@ -886,7 +891,7 @@ document.addEventListener('DOMContentLoaded', () => {
             bgAudio.play().catch(() => {});
         }
         
-        if (shouldUpdateHash && window.location.hash.includes('project/')) {
+        if (wasOpen && shouldUpdateHash && window.location.hash.includes('project/')) {
             if (history.pushState) {
                 history.pushState("", document.title, window.location.pathname + window.location.search);
             } else {
